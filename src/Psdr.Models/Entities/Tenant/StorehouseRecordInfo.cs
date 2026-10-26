@@ -40,6 +40,11 @@ namespace Psdr.Models.Entities
         public int? ProductID {get;set;}
 
         /// <summary>
+        /// 该入库明细实际进入的仓库编号。
+        /// </summary>
+        public int? StoreHouseID { get; set; }
+
+        /// <summary>
         /// Desc:
         /// Default:
         /// Nullable:True

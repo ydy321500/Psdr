@@ -42,9 +42,26 @@
     <Compile Include="Admin\CentralDatabase.cs" />
     <Compile Include="Admin\AdminAuthService.cs" />
     <Compile Include="Admin\AgentDAL.cs" />
+    <Compile Include="Admin\AdminLogDAL.cs" />
     <Compile Include="Admin\TenantProvisioningService.cs" />
     <Compile Include="Admin\AgentFunctionService.cs" />
     <Compile Include="StoreHouse\StoreHouseDAL.cs" />
+    <Compile Include="Product\ProductDAL.cs" />
+    <Compile Include="Product\BarCodeDAL.cs" />
+    <Compile Include="Stock\StockDAL.cs" />
+    <Compile Include="Stock\RedPacketDAL.cs" />
+    <Compile Include="Stock\BusinessDocumentDAL.cs" />
+    <Compile Include="Stock\SalesOrderReviewDAL.cs" />
+    <Compile Include="Finance\FinanceDAL.cs" />
+    <Compile Include="Finance\PersonPriceDAL.cs" />
+    <Compile Include="Set\IniDAL.cs" />
+    <Compile Include="Set\LogDAL.cs" />
+    <Compile Include="Market\MarketProductDAL.cs" />
+    <Compile Include="Market\MarketUserDAL.cs" />
+    <Compile Include="Market\MarketIndentDAL.cs" />
+    <Compile Include="Report\InventoryReportDAL.cs" />
+    <Compile Include="Report\ReportStyleDAL.cs" />
+    <Compile Include="Stock\StockTransactionService.cs" />
     <Compile Include="ProductMap\ProductMapDAL.cs" />
     <Compile Include="Dictionary\DictionaryDAL.cs" />
     <Compile Include="Dashboard\DashboardDAL.cs" />
@@ -71,6 +88,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="..\..\database\tenant\005_TenantFunction.sql">
       <LogicalName>Psdr.Dals.Schema.Tenant.005_TenantFunction.sql</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\database\tenant\006_Inventory.sql">
+      <LogicalName>Psdr.Dals.Schema.Tenant.006_Inventory.sql</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\database\tenant\007_StockBarcodeUnique.sql">
+      <LogicalName>Psdr.Dals.Schema.Tenant.007_StockBarcodeUnique.sql</LogicalName>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -58,8 +58,11 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Views\AgentManagement\AgentManagementWindow.xaml" />
+    <Page Include="Views\AgentManagement\AdminLogWindow.xaml" />
     <Compile Include="Views\AgentManagement\AgentManagementWindow.xaml.cs"><DependentUpon>AgentManagementWindow.xaml</DependentUpon></Compile>
+    <Compile Include="Views\AgentManagement\AdminLogWindow.xaml.cs"><DependentUpon>AdminLogWindow.xaml</DependentUpon></Compile>
     <Compile Include="ViewModels\AgentManagement\AgentManagementWindowViewModel.cs" />
+    <Compile Include="ViewModels\AgentManagement\AdminLogWindowViewModel.cs" />
     <Compile Include="Services\AdminSession.cs" />
     <Compile Include="Services\AdminWindowNavigator.cs" />
   </ItemGroup>

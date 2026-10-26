@@ -40,6 +40,11 @@ namespace Psdr.Models.Entities
            /// Nullable:True
            /// </summary>           
            public int? ShopID {get;set;}
+
+           /// <summary>
+           /// 客户退货回库的仓库编号。
+           /// </summary>
+           public int? StoreHouseID { get; set; }
         [Navigate(NavigateType.OneToOne, nameof(ShopID), nameof(Shop.ShopID))]
         public Shop shop { get; set; } //不能赋值只能是null
         /// <summary>

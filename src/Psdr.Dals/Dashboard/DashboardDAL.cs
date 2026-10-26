@@ -39,7 +39,7 @@ namespace Psdr.Dals.Dashboard
                 {
                     CustomerCount = db.Queryable<Psdr.Models.Entities.Shop>().Count(),
                     SupplierCount = db.Queryable<Psdr.Models.Entities.Supply>().Count(),
-                    ProductCount = db.Queryable<Product>().Count(),
+                    ProductCount = db.Queryable<Psdr.Models.Entities.Product>().Count(),
                     WarehouseCount = db.Queryable<Psdr.Models.Entities.StoreHouse>().Count()
                 };
 

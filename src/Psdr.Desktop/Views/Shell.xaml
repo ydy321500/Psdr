@@ -1,33 +1,6 @@
-<Window x:Class="Psdr.Desktop.Views.Shell"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:prism="http://prismlibrary.com/"
-        xmlns:vm="clr-namespace:Psdr.Desktop.ViewModels"
-        xmlns:storeVm="clr-namespace:Psdr.Desktop.ViewModels.BaseData.StoreHouse"
-        xmlns:supplyVm="clr-namespace:Psdr.Desktop.ViewModels.BaseData.Supply"
-        xmlns:shopVm="clr-namespace:Psdr.Desktop.ViewModels.BaseData.Shop"
-        xmlns:salesManVm="clr-namespace:Psdr.Desktop.ViewModels.BaseData.SalesMan"
-        xmlns:userVm="clr-namespace:Psdr.Desktop.ViewModels.BaseData.User"
-        xmlns:productMapVm="clr-namespace:Psdr.Desktop.ViewModels.Set.ProductMap"
-        xmlns:dictionaryVm="clr-namespace:Psdr.Desktop.ViewModels.BaseData.Dictionary"
-        xmlns:views="clr-namespace:Psdr.Desktop.Views"
-        xmlns:storeViews="clr-namespace:Psdr.Desktop.Views.BaseData.StoreHouse"
-        xmlns:supplyViews="clr-namespace:Psdr.Desktop.Views.BaseData.Supply"
-        xmlns:shopViews="clr-namespace:Psdr.Desktop.Views.BaseData.Shop"
-        xmlns:salesManViews="clr-namespace:Psdr.Desktop.Views.BaseData.SalesMan"
-        xmlns:userViews="clr-namespace:Psdr.Desktop.Views.BaseData.User"
-        xmlns:productMapViews="clr-namespace:Psdr.Desktop.Views.Set.ProductMap"
-        xmlns:dictionaryViews="clr-namespace:Psdr.Desktop.Views.BaseData.Dictionary"
-        xmlns:shell="clr-namespace:System.Windows.Shell;assembly=PresentationFramework"
-        prism:ViewModelLocator.AutoWireViewModel="True"
-        Title="进销存红包系统" Width="1280" Height="760"
-        MinWidth="1050" MinHeight="600" WindowStartupLocation="CenterScreen"
-        WindowStyle="None" ResizeMode="CanResize" WindowState="Maximized"
-        Closing="OnClosing">
+﻿<Window x:Class="Psdr.Desktop.Views.Shell" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:prism="http://prismlibrary.com/" xmlns:vm="clr-namespace:Psdr.Desktop.ViewModels" xmlns:storeVm="clr-namespace:Psdr.Desktop.ViewModels.BaseData.StoreHouse" xmlns:productVm="clr-namespace:Psdr.Desktop.ViewModels.BaseData.Product" xmlns:stockVm="clr-namespace:Psdr.Desktop.ViewModels.Stock" xmlns:financeVm="clr-namespace:Psdr.Desktop.ViewModels.Finance" xmlns:supplyVm="clr-namespace:Psdr.Desktop.ViewModels.BaseData.Supply" xmlns:shopVm="clr-namespace:Psdr.Desktop.ViewModels.BaseData.Shop" xmlns:salesManVm="clr-namespace:Psdr.Desktop.ViewModels.BaseData.SalesMan" xmlns:userVm="clr-namespace:Psdr.Desktop.ViewModels.BaseData.User" xmlns:productMapVm="clr-namespace:Psdr.Desktop.ViewModels.Set.ProductMap" xmlns:setVm="clr-namespace:Psdr.Desktop.ViewModels.Set" xmlns:marketVm="clr-namespace:Psdr.Desktop.ViewModels.Market" xmlns:reportVm="clr-namespace:Psdr.Desktop.ViewModels.Report" xmlns:dictionaryVm="clr-namespace:Psdr.Desktop.ViewModels.BaseData.Dictionary" xmlns:views="clr-namespace:Psdr.Desktop.Views" xmlns:storeViews="clr-namespace:Psdr.Desktop.Views.BaseData.StoreHouse" xmlns:productViews="clr-namespace:Psdr.Desktop.Views.BaseData.Product" xmlns:stockViews="clr-namespace:Psdr.Desktop.Views.Stock" xmlns:financeViews="clr-namespace:Psdr.Desktop.Views.Finance" xmlns:supplyViews="clr-namespace:Psdr.Desktop.Views.BaseData.Supply" xmlns:shopViews="clr-namespace:Psdr.Desktop.Views.BaseData.Shop" xmlns:salesManViews="clr-namespace:Psdr.Desktop.Views.BaseData.SalesMan" xmlns:userViews="clr-namespace:Psdr.Desktop.Views.BaseData.User" xmlns:productMapViews="clr-namespace:Psdr.Desktop.Views.Set.ProductMap" xmlns:setViews="clr-namespace:Psdr.Desktop.Views.Set" xmlns:marketViews="clr-namespace:Psdr.Desktop.Views.Market" xmlns:reportViews="clr-namespace:Psdr.Desktop.Views.Report" xmlns:dictionaryViews="clr-namespace:Psdr.Desktop.Views.BaseData.Dictionary" xmlns:shell="clr-namespace:System.Windows.Shell;assembly=PresentationFramework" prism:ViewModelLocator.AutoWireViewModel="True" Title="进销存红包系统" Width="1280" Height="760" MinWidth="1050" MinHeight="600" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="CanResize" WindowState="Maximized" Closing="OnClosing">
     <shell:WindowChrome.WindowChrome>
-        <shell:WindowChrome CaptionHeight="54" ResizeBorderThickness="6"
-                            GlassFrameThickness="0" CornerRadius="0"
-                            UseAeroCaptionButtons="False" />
+        <shell:WindowChrome CaptionHeight="54" ResizeBorderThickness="6" GlassFrameThickness="0" CornerRadius="0" UseAeroCaptionButtons="False" />
     </shell:WindowChrome.WindowChrome>
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibility" />
@@ -36,6 +9,45 @@
         </DataTemplate>
         <DataTemplate DataType="{x:Type storeVm:StoreHouseViewModel}">
             <storeViews:StoreHouseView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type productVm:ProductViewModel}">
+            <productViews:ProductView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type stockVm:StockViewModel}">
+            <stockViews:StockView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type stockVm:StockInViewModel}">
+            <stockViews:StockInView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type stockVm:StockIssueViewModel}">
+            <stockViews:StockIssueView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type stockVm:StockReturnViewModel}">
+            <stockViews:StockIssueView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type stockVm:BusinessDocumentViewModel}">
+            <stockViews:BusinessDocumentView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type stockVm:SalesOrderReviewViewModel}">
+            <stockViews:SalesOrderReviewView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type financeVm:FinanceViewModel}">
+            <financeViews:FinanceView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type financeVm:PersonPriceViewModel}">
+            <financeViews:PersonPriceView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type stockVm:BarCodeBindingViewModel}">
+            <stockViews:BarCodeBindingView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type stockVm:InventoryCheckViewModel}">
+            <stockViews:InventoryCheckView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type stockVm:BarcodeInventoryViewModel}">
+            <stockViews:BarcodeInventoryView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type stockVm:RedPacketViewModel}">
+            <stockViews:RedPacketView />
         </DataTemplate>
         <DataTemplate DataType="{x:Type supplyVm:SupplyViewModel}">
             <supplyViews:SupplyView />
@@ -52,6 +64,27 @@
         <DataTemplate DataType="{x:Type productMapVm:ProductMapViewModel}">
             <productMapViews:ProductMapView />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type setVm:IniViewModel}">
+            <setViews:IniView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type setVm:LogViewModel}">
+            <setViews:LogView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type marketVm:MarketProductViewModel}">
+            <marketViews:MarketProductView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type marketVm:MarketUserViewModel}">
+            <marketViews:MarketUserView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type marketVm:MarketIndentViewModel}">
+            <marketViews:MarketIndentView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type reportVm:InventoryReportViewModel}">
+            <reportViews:InventoryReportView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type reportVm:ReportStyleViewModel}">
+            <reportViews:ReportStyleView />
+        </DataTemplate>
         <DataTemplate DataType="{x:Type dictionaryVm:DictionaryViewModel}">
             <dictionaryViews:DictionaryView />
         </DataTemplate>
@@ -61,9 +94,7 @@
             <RowDefinition Height="54" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-
-        <Border Grid.Row="0" Background="{DynamicResource SurfaceBrush}"
-                BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0,0,0,1">
+        <Border Grid.Row="0" Background="{DynamicResource SurfaceBrush}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0,0,0,1">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="48" />
@@ -73,59 +104,34 @@
                     <ColumnDefinition Width="46" />
                     <ColumnDefinition Width="46" />
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" Style="{DynamicResource TitleBarButtonStyle}"
-                        Command="{Binding ToggleSidebarVisibilityCommand}" ToolTip="显示或隐藏侧栏"
-                        AutomationProperties.Name="显示或隐藏侧栏" AutomationProperties.AutomationId="ToggleSidebarVisibility"
-                        shell:WindowChrome.IsHitTestVisibleInChrome="True">
-                    <Path Data="{StaticResource MenuIconGeometry}" Stroke="{DynamicResource TextBrush}"
-                          StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
+                <Button Grid.Column="0" Style="{DynamicResource TitleBarButtonStyle}" Command="{Binding ToggleSidebarVisibilityCommand}" ToolTip="显示或隐藏侧栏" AutomationProperties.Name="显示或隐藏侧栏" AutomationProperties.AutomationId="ToggleSidebarVisibility" shell:WindowChrome.IsHitTestVisibleInChrome="True">
+                    <Path Data="{StaticResource MenuIconGeometry}" Stroke="{DynamicResource TextBrush}" StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
                 </Button>
-                <TextBlock Grid.Column="1" Text="进销存红包系统" VerticalAlignment="Center"
-                           FontWeight="SemiBold" FontSize="16" Margin="12,0,0,0" />
-                <Grid Grid.Column="2" Margin="24,0,0,0" HorizontalAlignment="Left"
-                      Visibility="{Binding IsSidebarVisible, Converter={StaticResource BooleanToVisibility}}">
-                    <Button Style="{DynamicResource NavigationTitleBarButtonStyle}"
-                            Command="{Binding ToggleSidebarExpandedCommand}" ToolTip="收起导航栏"
-                            AutomationProperties.Name="收起导航栏" AutomationProperties.AutomationId="CollapseSidebar"
-                            Visibility="{Binding IsSidebarExpanded, Converter={StaticResource BooleanToVisibility}}"
-                            shell:WindowChrome.IsHitTestVisibleInChrome="True">
+                <TextBlock Grid.Column="1" Text="进销存红包系统" VerticalAlignment="Center" FontWeight="SemiBold" FontSize="16" Margin="12,0,0,0" />
+                <Grid Grid.Column="2" Margin="24,0,0,0" HorizontalAlignment="Left" Visibility="{Binding IsSidebarVisible, Converter={StaticResource BooleanToVisibility}}">
+                    <Button Style="{DynamicResource NavigationTitleBarButtonStyle}" Command="{Binding ToggleSidebarExpandedCommand}" ToolTip="收起导航栏" AutomationProperties.Name="收起导航栏" AutomationProperties.AutomationId="CollapseSidebar" Visibility="{Binding IsSidebarExpanded, Converter={StaticResource BooleanToVisibility}}" shell:WindowChrome.IsHitTestVisibleInChrome="True">
                         <StackPanel Orientation="Horizontal">
-                            <Path Data="{StaticResource CollapseIconGeometry}" Stroke="{DynamicResource TextBrush}"
-                                  StrokeThickness="1.7" Width="17" Height="17" Stretch="Uniform" />
+                            <Path Data="{StaticResource CollapseIconGeometry}" Stroke="{DynamicResource TextBrush}" StrokeThickness="1.7" Width="17" Height="17" Stretch="Uniform" />
                             <TextBlock Text="收起导航" Margin="7,0,0,0" VerticalAlignment="Center" />
                         </StackPanel>
                     </Button>
-                    <Button Style="{DynamicResource NavigationTitleBarButtonStyle}"
-                            Command="{Binding ToggleSidebarExpandedCommand}" ToolTip="展开导航栏"
-                            AutomationProperties.Name="展开导航栏" AutomationProperties.AutomationId="ExpandSidebar"
-                            Visibility="{Binding IsSidebarCompact, Converter={StaticResource BooleanToVisibility}}"
-                            shell:WindowChrome.IsHitTestVisibleInChrome="True">
+                    <Button Style="{DynamicResource NavigationTitleBarButtonStyle}" Command="{Binding ToggleSidebarExpandedCommand}" ToolTip="展开导航栏" AutomationProperties.Name="展开导航栏" AutomationProperties.AutomationId="ExpandSidebar" Visibility="{Binding IsSidebarCompact, Converter={StaticResource BooleanToVisibility}}" shell:WindowChrome.IsHitTestVisibleInChrome="True">
                         <StackPanel Orientation="Horizontal">
-                            <Path Data="{StaticResource ExpandIconGeometry}" Stroke="{DynamicResource TextBrush}"
-                                  StrokeThickness="1.7" Width="17" Height="17" Stretch="Uniform" />
+                            <Path Data="{StaticResource ExpandIconGeometry}" Stroke="{DynamicResource TextBrush}" StrokeThickness="1.7" Width="17" Height="17" Stretch="Uniform" />
                             <TextBlock Text="展开导航" Margin="7,0,0,0" VerticalAlignment="Center" />
                         </StackPanel>
                     </Button>
                 </Grid>
-                <Button Grid.Column="3" Style="{DynamicResource TitleBarButtonStyle}"
-                        Command="{Binding MinimizeCommand}" ToolTip="最小化"
-                        AutomationProperties.Name="最小化" AutomationProperties.AutomationId="MinimizeWindow"
-                        shell:WindowChrome.IsHitTestVisibleInChrome="True">
-                    <Path Data="{StaticResource MinimizeIconGeometry}" Stroke="{DynamicResource TextBrush}"
-                          StrokeThickness="1.8" Width="15" Height="15" Stretch="Uniform" />
+                <Button Grid.Column="3" Style="{DynamicResource TitleBarButtonStyle}" Command="{Binding MinimizeCommand}" ToolTip="最小化" AutomationProperties.Name="最小化" AutomationProperties.AutomationId="MinimizeWindow" shell:WindowChrome.IsHitTestVisibleInChrome="True">
+                    <Path Data="{StaticResource MinimizeIconGeometry}" Stroke="{DynamicResource TextBrush}" StrokeThickness="1.8" Width="15" Height="15" Stretch="Uniform" />
                 </Button>
-                <Button Grid.Column="4" Style="{DynamicResource TitleBarButtonStyle}"
-                        Command="{Binding ToggleMaximizeCommand}" ToolTip="最大化或还原"
-                        AutomationProperties.Name="最大化或还原" AutomationProperties.AutomationId="ToggleMaximizeWindow"
-                        shell:WindowChrome.IsHitTestVisibleInChrome="True">
-                    <Path Stroke="{DynamicResource TextBrush}" StrokeThickness="1.7"
-                          Width="15" Height="15" Stretch="Uniform">
+                <Button Grid.Column="4" Style="{DynamicResource TitleBarButtonStyle}" Command="{Binding ToggleMaximizeCommand}" ToolTip="最大化或还原" AutomationProperties.Name="最大化或还原" AutomationProperties.AutomationId="ToggleMaximizeWindow" shell:WindowChrome.IsHitTestVisibleInChrome="True">
+                    <Path Stroke="{DynamicResource TextBrush}" StrokeThickness="1.7" Width="15" Height="15" Stretch="Uniform">
                         <Path.Style>
                             <Style TargetType="Path">
                                 <Setter Property="Data" Value="{StaticResource MaximizeIconGeometry}" />
                                 <Style.Triggers>
-                                    <DataTrigger Binding="{Binding WindowState, RelativeSource={RelativeSource AncestorType=Window}}"
-                                                 Value="Maximized">
+                                    <DataTrigger Binding="{Binding WindowState, RelativeSource={RelativeSource AncestorType=Window}}" Value="Maximized">
                                         <Setter Property="Data" Value="{StaticResource RestoreIconGeometry}" />
                                     </DataTrigger>
                                 </Style.Triggers>
@@ -133,94 +139,74 @@
                         </Path.Style>
                     </Path>
                 </Button>
-                <Button Grid.Column="5" Style="{DynamicResource CloseTitleBarButtonStyle}"
-                        Command="{Binding CloseCommand}" ToolTip="关闭"
-                        AutomationProperties.Name="关闭" AutomationProperties.AutomationId="CloseWindow"
-                        shell:WindowChrome.IsHitTestVisibleInChrome="True">
-                    <Path Data="{StaticResource CloseIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"
-                          StrokeThickness="1.8" Width="15" Height="15" Stretch="Uniform" />
+                <Button Grid.Column="5" Style="{DynamicResource CloseTitleBarButtonStyle}" Command="{Binding CloseCommand}" ToolTip="关闭" AutomationProperties.Name="关闭" AutomationProperties.AutomationId="CloseWindow" shell:WindowChrome.IsHitTestVisibleInChrome="True">
+                    <Path Data="{StaticResource CloseIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}" StrokeThickness="1.8" Width="15" Height="15" Stretch="Uniform" />
                 </Button>
             </Grid>
         </Border>
-
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="{Binding SidebarWidth}" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-
-            <Border Grid.Column="0" Background="{DynamicResource SidebarBrush}" ClipToBounds="True"
-                    Visibility="{Binding IsSidebarVisible, Converter={StaticResource BooleanToVisibility}}">
+            <Border Grid.Column="0" Background="{DynamicResource SidebarBrush}" ClipToBounds="True" Visibility="{Binding IsSidebarVisible, Converter={StaticResource BooleanToVisibility}}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="78" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-
                     <Grid Grid.Row="0" Margin="14,0">
-                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left"
-                                    Visibility="{Binding IsSidebarExpanded, Converter={StaticResource BooleanToVisibility}}">
-                            <Border Width="40" Height="40" CornerRadius="9"
-                                    Background="{DynamicResource SidebarHoverBrush}">
-                                <TextBlock Text="P" Foreground="White" FontWeight="Bold" FontSize="21"
-                                           HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Visibility="{Binding IsSidebarExpanded, Converter={StaticResource BooleanToVisibility}}">
+                            <Border Width="40" Height="40" CornerRadius="9" Background="{DynamicResource SidebarHoverBrush}">
+                                <TextBlock Text="P" Foreground="White" FontWeight="Bold" FontSize="21" HorizontalAlignment="Center" VerticalAlignment="Center" />
                             </Border>
                             <StackPanel Margin="12,0,0,0" VerticalAlignment="Center">
                                 <TextBlock Text="PSDR" Foreground="White" FontWeight="SemiBold" FontSize="18" />
                                 <TextBlock Text="业务管理平台" Style="{DynamicResource SidebarCaptionTextStyle}" />
                             </StackPanel>
                         </StackPanel>
-                        <Border Width="40" Height="40" CornerRadius="9" HorizontalAlignment="Center"
-                                VerticalAlignment="Center" Background="{DynamicResource SidebarHoverBrush}"
-                                Visibility="{Binding IsSidebarCompact, Converter={StaticResource BooleanToVisibility}}">
-                            <TextBlock Text="P" Foreground="White" FontWeight="Bold" FontSize="21"
-                                       HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        <Border Width="40" Height="40" CornerRadius="9" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{DynamicResource SidebarHoverBrush}" Visibility="{Binding IsSidebarCompact, Converter={StaticResource BooleanToVisibility}}">
+                            <TextBlock Text="P" Foreground="White" FontWeight="Bold" FontSize="21" HorizontalAlignment="Center" VerticalAlignment="Center" />
                         </Border>
                     </Grid>
-
-                    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto"
-                                  HorizontalScrollBarVisibility="Disabled">
+                    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
                         <Grid>
-                            <StackPanel Margin="12,12,12,0"
-                                        Visibility="{Binding IsSidebarExpanded, Converter={StaticResource BooleanToVisibility}}">
-                                <ToggleButton Style="{DynamicResource SidebarNavigationStyle}"
-                                              IsChecked="{Binding IsHomeActive, Mode=OneWay}"
-                                              Command="{Binding NavigateHomeCommand}" Padding="14,0"
-                                              AutomationProperties.Name="系统看板" AutomationProperties.AutomationId="NavigateHomeExpanded">
+                            <StackPanel Margin="12,12,12,0" Visibility="{Binding IsSidebarExpanded, Converter={StaticResource BooleanToVisibility}}">
+                                <ToggleButton Style="{DynamicResource SidebarNavigationStyle}" IsChecked="{Binding IsHomeActive, Mode=OneWay}" Command="{Binding NavigateHomeCommand}" Padding="14,0" AutomationProperties.Name="系统看板" AutomationProperties.AutomationId="NavigateHomeExpanded">
                                     <StackPanel Orientation="Horizontal">
-                                        <Path Data="{StaticResource DashboardIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}"
-                                              StrokeThickness="1.7" Width="21" Height="21" Stretch="Uniform" />
+                                        <Path Data="{StaticResource DashboardIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="21" Height="21" Stretch="Uniform" />
                                         <TextBlock Text="系统看板" Margin="14,0,0,0" VerticalAlignment="Center" />
                                     </StackPanel>
                                 </ToggleButton>
-                                <Button Style="{DynamicResource SidebarSectionButtonStyle}"
-                                        Command="{Binding ToggleBaseDataGroupCommand}"
-                                        Margin="0,12,0,4" Padding="14,0" HorizontalContentAlignment="Stretch"
-                                        Visibility="{Binding HasBaseDataAccess, Converter={StaticResource BooleanToVisibility}}"
-                                        AutomationProperties.Name="开合基础数据" AutomationProperties.AutomationId="ToggleBaseDataGroup">
+                                <StackPanel Visibility="{Binding HasBaseDataAccess, Converter={StaticResource BooleanToVisibility}}">
+                                <ToggleButton x:Name="BasicDataSection" Style="{DynamicResource SidebarNavigationStyle}" IsChecked="False" Margin="0,12,0,4" Padding="14,0" HorizontalContentAlignment="Stretch" AutomationProperties.Name="基础资料" AutomationProperties.AutomationId="ToggleBasicDataSection">
+                                    <StackPanel Orientation="Horizontal"><Path Data="{StaticResource BaseDataIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="21" Height="21" Stretch="Uniform" /><TextBlock Text="基础资料" Margin="14,0,0,0" VerticalAlignment="Center" /></StackPanel>
+                                </ToggleButton>
+                                <StackPanel Visibility="{Binding IsChecked, ElementName=BasicDataSection, Converter={StaticResource BooleanToVisibility}}">
+                                <Button Style="{DynamicResource SidebarSectionButtonStyle}" Command="{Binding ToggleBaseDataGroupCommand}" Margin="0,0,0,0" Padding="14,0" HorizontalContentAlignment="Stretch" Visibility="Collapsed" AutomationProperties.Name="开合业务管理" AutomationProperties.AutomationId="ToggleBusinessGroup">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="Auto" />
                                             <ColumnDefinition Width="*" />
                                             <ColumnDefinition Width="22" />
                                         </Grid.ColumnDefinitions>
-                                        <Path Data="{StaticResource BaseDataIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"
-                                              StrokeThickness="1.7" Width="21" Height="21" Stretch="Uniform"
-                                              VerticalAlignment="Center" />
-                                        <TextBlock Grid.Column="1" Text="基础数据" Margin="14,0,0,0" VerticalAlignment="Center" />
-                                        <Path Grid.Column="2" Data="{StaticResource ChevronIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"
-                                              StrokeThickness="1.9" Width="15" Height="15" Stretch="Uniform"
-                                              HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <Path Data="{StaticResource BaseDataIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}" StrokeThickness="1.7" Width="21" Height="21" Stretch="Uniform" VerticalAlignment="Center" />
+                                        <TextBlock Grid.Column="1" Text="业务管理" Margin="14,0,0,0" VerticalAlignment="Center" />
+                                        <Path Grid.Column="2" Data="{StaticResource ChevronIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}" StrokeThickness="1.9" Width="15" Height="15" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center">
                                             <Path.Style>
                                                 <Style TargetType="Path">
                                                     <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
                                                     <Setter Property="RenderTransform">
-                                                        <Setter.Value><RotateTransform Angle="-90" /></Setter.Value>
+                                                        <Setter.Value>
+                                                            <RotateTransform Angle="-90" />
+                                                        </Setter.Value>
                                                     </Setter>
                                                     <Style.Triggers>
                                                         <DataTrigger Binding="{Binding IsBaseDataGroupExpanded}" Value="True">
                                                             <Setter Property="RenderTransform">
-                                                                <Setter.Value><RotateTransform Angle="0" /></Setter.Value>
+                                                                <Setter.Value>
+                                                                    <RotateTransform Angle="0" />
+                                                                </Setter.Value>
                                                             </Setter>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -230,216 +216,306 @@
                                     </Grid>
                                 </Button>
                                 <StackPanel Visibility="{Binding IsBaseDataGroupExpanded, Converter={StaticResource BooleanToVisibility}}">
-                                <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}"
-                                              IsChecked="{Binding IsStoreHouseActive, Mode=OneWay}"
-                                              Command="{Binding NavigateStoreHouseCommand}" Padding="49,0"
-                                              AutomationProperties.Name="仓库维护" AutomationProperties.AutomationId="NavigateStoreHouseExpanded"
-                                              Visibility="{Binding CanStoreHouse, Converter={StaticResource BooleanToVisibility}}">
-                                    <StackPanel Orientation="Horizontal">
-                                        <Path Data="{StaticResource WarehouseIconGeometry}"
-                                              Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}"
-                                              StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
-                                        <TextBlock Text="仓库维护" Margin="10,0,0,0" VerticalAlignment="Center" />
-                                    </StackPanel>
-                                </ToggleButton>
-                                <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}"
-                                              IsChecked="{Binding IsSupplyActive, Mode=OneWay}"
-                                              Command="{Binding NavigateSupplyCommand}" Padding="49,0"
-                                              AutomationProperties.Name="供应商维护" AutomationProperties.AutomationId="NavigateSupplyExpanded"
-                                              Visibility="{Binding CanSupply, Converter={StaticResource BooleanToVisibility}}">
-                                    <StackPanel Orientation="Horizontal">
-                                        <Path Data="{StaticResource SupplierIconGeometry}"
-                                              Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}"
-                                              StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
-                                        <TextBlock Text="供应商维护" Margin="10,0,0,0" VerticalAlignment="Center" />
-                                    </StackPanel>
-                                </ToggleButton>
-                                <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}"
-                                              IsChecked="{Binding IsShopActive, Mode=OneWay}"
-                                              Command="{Binding NavigateShopCommand}" Padding="49,0"
-                                              AutomationProperties.Name="客户维护" AutomationProperties.AutomationId="NavigateShopExpanded"
-                                              Visibility="{Binding CanShop, Converter={StaticResource BooleanToVisibility}}">
-                                    <StackPanel Orientation="Horizontal">
-                                        <Path Data="{StaticResource CustomerIconGeometry}"
-                                              Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}"
-                                              StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
-                                        <TextBlock Text="客户维护" Margin="10,0,0,0" VerticalAlignment="Center" />
-                                    </StackPanel>
-                                </ToggleButton>
-                                <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}"
-                                              IsChecked="{Binding IsSalesManActive, Mode=OneWay}"
-                                              Command="{Binding NavigateSalesManCommand}" Padding="49,0"
-                                              AutomationProperties.Name="销售人员维护" AutomationProperties.AutomationId="NavigateSalesManExpanded"
-                                              Visibility="{Binding CanSalesMan, Converter={StaticResource BooleanToVisibility}}">
-                                    <StackPanel Orientation="Horizontal">
-                                        <Path Data="{StaticResource SalesManIconGeometry}"
-                                              Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}"
-                                              StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
-                                        <TextBlock Text="销售人员维护" Margin="10,0,0,0" VerticalAlignment="Center" />
-                                    </StackPanel>
-                                </ToggleButton>
-                                <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}"
-                                              IsChecked="{Binding IsDictionaryActive, Mode=OneWay}"
-                                              Command="{Binding NavigateDictionaryCommand}" Padding="49,0"
-                                              Visibility="{Binding CanDictionary, Converter={StaticResource BooleanToVisibility}}"
-                                              AutomationProperties.Name="字典维护">
-                                    <StackPanel Orientation="Horizontal">
-                                        <Path Data="{StaticResource DictionaryIconGeometry}"
-                                              Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}"
-                                              StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
-                                        <TextBlock Text="字典维护" Margin="10,0,0,0" VerticalAlignment="Center" />
-                                    </StackPanel>
-                                </ToggleButton>
-                                <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}"
-                                              IsChecked="{Binding IsUserActive, Mode=OneWay}"
-                                              Command="{Binding NavigateUserCommand}" Padding="49,0"
-                                              Visibility="{Binding CanManageUsers, Converter={StaticResource BooleanToVisibility}}"
-                                              AutomationProperties.Name="用户维护" AutomationProperties.AutomationId="NavigateUserExpanded">
-                                    <StackPanel Orientation="Horizontal">
-                                        <Path Data="{StaticResource UserManagementIconGeometry}"
-                                              Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}"
-                                              StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
-                                        <TextBlock Text="用户维护" Margin="10,0,0,0" VerticalAlignment="Center" />
-                                    </StackPanel>
-                                </ToggleButton>
+                                    <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}" IsChecked="{Binding IsStoreHouseActive, Mode=OneWay}" Command="{Binding NavigateStoreHouseCommand}" Padding="49,0" AutomationProperties.Name="仓库维护" AutomationProperties.AutomationId="NavigateStoreHouseExpanded" Visibility="{Binding CanStoreHouse, Converter={StaticResource BooleanToVisibility}}">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Path Data="{StaticResource WarehouseIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
+                                            <TextBlock Text="仓库维护" Margin="10,0,0,0" VerticalAlignment="Center" />
+                                        </StackPanel>
+                                    </ToggleButton>
+                                    <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}" IsChecked="{Binding IsProductActive, Mode=OneWay}" Command="{Binding NavigateProductCommand}" Padding="49,0" Visibility="{Binding CanProduct, Converter={StaticResource BooleanToVisibility}}" AutomationProperties.Name="产品资料" AutomationProperties.AutomationId="NavigateProductExpanded">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Path Data="{StaticResource ProductMapIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
+                                            <TextBlock Text="产品资料" Margin="10,0,0,0" VerticalAlignment="Center" />
+                                        </StackPanel>
+                                    </ToggleButton>
                                 </StackPanel>
-                                <Button Style="{DynamicResource SidebarSectionButtonStyle}"
-                                        Command="{Binding ToggleSettingsGroupCommand}"
-                                        Margin="0,12,0,4" Padding="14,0" HorizontalContentAlignment="Stretch"
-                                        Visibility="{Binding CanProductMap, Converter={StaticResource BooleanToVisibility}}"
-                                        AutomationProperties.Name="开合系统设置">
+                                </StackPanel>
+                                <ToggleButton x:Name="WarehouseSection" Style="{DynamicResource SidebarNavigationStyle}" IsChecked="False" Margin="0,12,0,4" Padding="14,0" HorizontalContentAlignment="Stretch" AutomationProperties.Name="仓储与库存" AutomationProperties.AutomationId="ToggleWarehouseSection"><StackPanel Orientation="Horizontal"><Path Data="{StaticResource WarehouseIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="21" Height="21" Stretch="Uniform" /><TextBlock Text="仓储与库存" Margin="14,0,0,0" VerticalAlignment="Center" /></StackPanel></ToggleButton>
+                                <StackPanel Visibility="{Binding IsChecked, ElementName=WarehouseSection, Converter={StaticResource BooleanToVisibility}}">
+                                    <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}" IsChecked="{Binding IsStockActive, Mode=OneWay}" Command="{Binding NavigateStockCommand}" Padding="49,0" Visibility="{Binding CanStock, Converter={StaticResource BooleanToVisibility}}" AutomationProperties.Name="库存查询" AutomationProperties.AutomationId="NavigateStockExpanded">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Path Data="{StaticResource WarehouseIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
+                                            <TextBlock Text="库存查询" Margin="10,0,0,0" VerticalAlignment="Center" />
+                                        </StackPanel>
+                                    </ToggleButton>
+                                    <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}" IsChecked="{Binding IsBarCodeGenerationActive, Mode=OneWay}" Command="{Binding NavigateBarCodeGenerationCommand}" Padding="49,0" Visibility="{Binding CanBarCodeGeneration, Converter={StaticResource BooleanToVisibility}}" AutomationProperties.Name="条码生成" AutomationProperties.AutomationId="NavigateBarCodeGenerationExpanded">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Path Data="{StaticResource ProductMapIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
+                                            <TextBlock Text="条码生成" Margin="10,0,0,0" VerticalAlignment="Center" />
+                                        </StackPanel>
+                                    </ToggleButton>
+                                    <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}" IsChecked="{Binding IsStockInActive, Mode=OneWay}" Command="{Binding NavigateStockInCommand}" Padding="49,0" Visibility="{Binding CanStockIn, Converter={StaticResource BooleanToVisibility}}" AutomationProperties.Name="采购入库" AutomationProperties.AutomationId="NavigateStockInExpanded">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Path Data="{StaticResource WarehouseIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
+                                            <TextBlock Text="采购入库" Margin="10,0,0,0" VerticalAlignment="Center" />
+                                        </StackPanel>
+                                    </ToggleButton>
+                                </StackPanel>
+                                <ToggleButton x:Name="OrderSection" Style="{DynamicResource SidebarNavigationStyle}" IsChecked="False" Margin="0,12,0,4" Padding="14,0" HorizontalContentAlignment="Stretch" AutomationProperties.Name="订单管理" AutomationProperties.AutomationId="ToggleOrderSection"><StackPanel Orientation="Horizontal"><Path Data="{StaticResource ProductMapIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="21" Height="21" Stretch="Uniform" /><TextBlock Text="订单管理" Margin="14,0,0,0" VerticalAlignment="Center" /></StackPanel></ToggleButton>
+                                <StackPanel Visibility="{Binding IsChecked, ElementName=OrderSection, Converter={StaticResource BooleanToVisibility}}">
+                                    <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}" IsChecked="{Binding IsStockIssueActive, Mode=OneWay}" Command="{Binding NavigateStockIssueCommand}" Padding="49,0" Visibility="{Binding CanStockIssue, Converter={StaticResource BooleanToVisibility}}" AutomationProperties.Name="销售出库" AutomationProperties.AutomationId="NavigateStockIssueExpanded">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Path Data="{StaticResource WarehouseIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
+                                            <TextBlock Text="销售出库" Margin="10,0,0,0" VerticalAlignment="Center" />
+                                        </StackPanel>
+                                    </ToggleButton>
+                                    <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}" IsChecked="{Binding IsSalesOrderReviewActive, Mode=OneWay}" Command="{Binding NavigateSalesOrderReviewCommand}" Padding="49,0" Visibility="{Binding CanSalesOrderReview, Converter={StaticResource BooleanToVisibility}}" AutomationProperties.Name="订单审核" AutomationProperties.AutomationId="NavigateSalesOrderReviewExpanded">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Path Data="{StaticResource WarehouseIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
+                                            <TextBlock Text="订单审核" Margin="10,0,0,0" VerticalAlignment="Center" />
+                                        </StackPanel>
+                                    </ToggleButton>
+                                    <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}" IsChecked="{Binding IsStockReturnActive, Mode=OneWay}" Command="{Binding NavigateStockReturnCommand}" Padding="49,0" Visibility="{Binding CanStockReturn, Converter={StaticResource BooleanToVisibility}}" AutomationProperties.Name="客户退货" AutomationProperties.AutomationId="NavigateStockReturnExpanded">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Path Data="{StaticResource WarehouseIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
+                                            <TextBlock Text="客户退货" Margin="10,0,0,0" VerticalAlignment="Center" />
+                                        </StackPanel>
+                                    </ToggleButton>
+                                    <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}" IsChecked="{Binding IsBusinessDocumentActive, Mode=OneWay}" Command="{Binding NavigateBusinessDocumentCommand}" Padding="49,0" Visibility="{Binding CanBusinessDocument, Converter={StaticResource BooleanToVisibility}}" AutomationProperties.Name="业务单据" AutomationProperties.AutomationId="NavigateBusinessDocumentExpanded">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Path Data="{StaticResource WarehouseIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
+                                            <TextBlock Text="业务单据" Margin="10,0,0,0" VerticalAlignment="Center" />
+                                        </StackPanel>
+                                    </ToggleButton>
+                                </StackPanel>
+                                <ToggleButton x:Name="InventoryControlSection" Style="{DynamicResource SidebarNavigationStyle}" IsChecked="False" Margin="0,12,0,4" Padding="14,0" HorizontalContentAlignment="Stretch" AutomationProperties.Name="库存控制" AutomationProperties.AutomationId="ToggleInventoryControlSection"><StackPanel Orientation="Horizontal"><Path Data="{StaticResource WarehouseIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="21" Height="21" Stretch="Uniform" /><TextBlock Text="库存控制" Margin="14,0,0,0" VerticalAlignment="Center" /></StackPanel></ToggleButton>
+                                <StackPanel Visibility="{Binding IsChecked, ElementName=InventoryControlSection, Converter={StaticResource BooleanToVisibility}}">
+                                    <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}" IsChecked="{Binding IsBarCodeBindingActive, Mode=OneWay}" Command="{Binding NavigateBarCodeBindingCommand}" Padding="49,0" Visibility="{Binding CanBarCodeBinding, Converter={StaticResource BooleanToVisibility}}" AutomationProperties.Name="条码绑定" AutomationProperties.AutomationId="NavigateBarCodeBindingExpanded">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Path Data="{StaticResource WarehouseIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
+                                            <TextBlock Text="条码绑定" Margin="10,0,0,0" VerticalAlignment="Center" />
+                                        </StackPanel>
+                                    </ToggleButton>
+                                    <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}" IsChecked="{Binding IsInventoryCheckActive, Mode=OneWay}" Command="{Binding NavigateInventoryCheckCommand}" Padding="49,0" Visibility="{Binding CanInventoryCheck, Converter={StaticResource BooleanToVisibility}}" AutomationProperties.Name="库存核对" AutomationProperties.AutomationId="NavigateInventoryCheckExpanded">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Path Data="{StaticResource WarehouseIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
+                                            <TextBlock Text="库存核对" Margin="10,0,0,0" VerticalAlignment="Center" />
+                                        </StackPanel>
+                                    </ToggleButton>
+                                </StackPanel>
+                                <ToggleButton x:Name="FinanceSection" Style="{DynamicResource SidebarNavigationStyle}" IsChecked="False" Margin="0,12,0,4" Padding="14,0" HorizontalContentAlignment="Stretch" AutomationProperties.Name="财务管理" AutomationProperties.AutomationId="ToggleFinanceSection"><StackPanel Orientation="Horizontal"><Path Data="{StaticResource ProductMapIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="21" Height="21" Stretch="Uniform" /><TextBlock Text="财务管理" Margin="14,0,0,0" VerticalAlignment="Center" /></StackPanel></ToggleButton>
+                                <StackPanel Visibility="{Binding IsChecked, ElementName=FinanceSection, Converter={StaticResource BooleanToVisibility}}">
+                                    <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}" IsChecked="{Binding IsFinanceActive, Mode=OneWay}" Command="{Binding NavigateFinanceCommand}" Padding="49,0" Visibility="{Binding CanFinance, Converter={StaticResource BooleanToVisibility}}" AutomationProperties.Name="财务往来" AutomationProperties.AutomationId="NavigateFinanceExpanded">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Path Data="{StaticResource WarehouseIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
+                                            <TextBlock Text="财务往来" Margin="10,0,0,0" VerticalAlignment="Center" />
+                                        </StackPanel>
+                                    </ToggleButton>
+                                    <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}" IsChecked="{Binding IsBarcodeInventoryActive, Mode=OneWay}" Command="{Binding NavigateBarcodeInventoryCommand}" Padding="49,0" Visibility="{Binding CanBarcodeInventory, Converter={StaticResource BooleanToVisibility}}" AutomationProperties.Name="有码扫码盘点" AutomationProperties.AutomationId="NavigateBarcodeInventoryExpanded">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Path Data="{StaticResource WarehouseIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
+                                            <TextBlock Text="有码扫码盘点" Margin="10,0,0,0" VerticalAlignment="Center" />
+                                        </StackPanel>
+                                    </ToggleButton>
+                                    <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}" IsChecked="{Binding IsRedPacketActive, Mode=OneWay}" Command="{Binding NavigateRedPacketCommand}" Padding="49,0" Visibility="{Binding CanRedPacket, Converter={StaticResource BooleanToVisibility}}" AutomationProperties.Name="红包兑换状态" AutomationProperties.AutomationId="NavigateRedPacketExpanded">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Path Data="{StaticResource WarehouseIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
+                                            <TextBlock Text="红包兑换状态" Margin="10,0,0,0" VerticalAlignment="Center" />
+                                        </StackPanel>
+                                    </ToggleButton>
+                                    <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}" IsChecked="{Binding IsPersonPriceActive, Mode=OneWay}" Command="{Binding NavigatePersonPriceCommand}" Padding="49,0" Visibility="{Binding CanPersonPrice, Converter={StaticResource BooleanToVisibility}}" AutomationProperties.Name="专属价格" AutomationProperties.AutomationId="NavigatePersonPriceExpanded">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Path Data="{StaticResource ProductMapIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
+                                            <TextBlock Text="专属价格" Margin="10,0,0,0" VerticalAlignment="Center" />
+                                        </StackPanel>
+                                    </ToggleButton>
+                                </StackPanel>
+                                <ToggleButton x:Name="MarketSection" Style="{DynamicResource SidebarNavigationStyle}" IsChecked="False" Margin="0,12,0,4" Padding="14,0" HorizontalContentAlignment="Stretch" AutomationProperties.Name="市场管理" AutomationProperties.AutomationId="ToggleMarketSection"><StackPanel Orientation="Horizontal"><Path Data="{StaticResource CustomerIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="21" Height="21" Stretch="Uniform" /><TextBlock Text="市场管理" Margin="14,0,0,0" VerticalAlignment="Center" /></StackPanel></ToggleButton>
+                                <StackPanel Visibility="{Binding IsChecked, ElementName=MarketSection, Converter={StaticResource BooleanToVisibility}}">
+                                    <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}" IsChecked="{Binding IsMarketProductActive, Mode=OneWay}" Command="{Binding NavigateMarketProductCommand}" Padding="49,0" Visibility="{Binding CanMarketProduct, Converter={StaticResource BooleanToVisibility}}" AutomationProperties.Name="市场产品" AutomationProperties.AutomationId="NavigateMarketProductExpanded">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Path Data="{StaticResource ProductMapIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
+                                            <TextBlock Text="市场产品" Margin="10,0,0,0" VerticalAlignment="Center" />
+                                        </StackPanel>
+                                    </ToggleButton>
+                                </StackPanel>
+                                <ToggleButton x:Name="ReportSection" Style="{DynamicResource SidebarNavigationStyle}" IsChecked="False" Margin="0,12,0,4" Padding="14,0" HorizontalContentAlignment="Stretch" AutomationProperties.Name="报表中心" AutomationProperties.AutomationId="ToggleReportSection"><StackPanel Orientation="Horizontal"><Path Data="{StaticResource DictionaryIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="21" Height="21" Stretch="Uniform" /><TextBlock Text="报表中心" Margin="14,0,0,0" VerticalAlignment="Center" /></StackPanel></ToggleButton>
+                                <StackPanel Visibility="{Binding IsChecked, ElementName=ReportSection, Converter={StaticResource BooleanToVisibility}}">
+                                    <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}" IsChecked="{Binding IsInventoryReportActive, Mode=OneWay}" Command="{Binding NavigateInventoryReportCommand}" Padding="49,0" Visibility="{Binding CanInventoryReport, Converter={StaticResource BooleanToVisibility}}" AutomationProperties.Name="库存汇总报表" AutomationProperties.AutomationId="NavigateInventoryReportExpanded">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Path Data="{StaticResource WarehouseIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
+                                            <TextBlock Text="库存汇总报表" Margin="10,0,0,0" VerticalAlignment="Center" />
+                                        </StackPanel>
+                                    </ToggleButton>
+                                    <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}" IsChecked="{Binding IsMarketUserActive, Mode=OneWay}" Command="{Binding NavigateMarketUserCommand}" Padding="49,0" Visibility="{Binding CanMarketUser, Converter={StaticResource BooleanToVisibility}}" AutomationProperties.Name="市场会员" AutomationProperties.AutomationId="NavigateMarketUserExpanded">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Path Data="{StaticResource ProductMapIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
+                                            <TextBlock Text="市场会员" Margin="10,0,0,0" VerticalAlignment="Center" />
+                                        </StackPanel>
+                                    </ToggleButton>
+                                    <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}" IsChecked="{Binding IsReportStyleActive, Mode=OneWay}" Command="{Binding NavigateReportStyleCommand}" Padding="49,0" Visibility="{Binding CanReportStyle, Converter={StaticResource BooleanToVisibility}}" AutomationProperties.Name="报表模板" AutomationProperties.AutomationId="NavigateReportStyleExpanded">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Path Data="{StaticResource ProductMapIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
+                                            <TextBlock Text="报表模板" Margin="10,0,0,0" VerticalAlignment="Center" />
+                                        </StackPanel>
+                                    </ToggleButton>
+                                    <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}" IsChecked="{Binding IsMarketIndentActive, Mode=OneWay}" Command="{Binding NavigateMarketIndentCommand}" Padding="49,0" Visibility="{Binding CanMarketIndent, Converter={StaticResource BooleanToVisibility}}" AutomationProperties.Name="市场订单" AutomationProperties.AutomationId="NavigateMarketIndentExpanded">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Path Data="{StaticResource ProductMapIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
+                                            <TextBlock Text="市场订单" Margin="10,0,0,0" VerticalAlignment="Center" />
+                                        </StackPanel>
+                                    </ToggleButton>
+                                </StackPanel>
+                                <ToggleButton x:Name="PartnerSection" Style="{DynamicResource SidebarNavigationStyle}" IsChecked="False" Margin="0,12,0,4" Padding="14,0" HorizontalContentAlignment="Stretch" AutomationProperties.Name="往来资料与账户" AutomationProperties.AutomationId="TogglePartnerSection"><StackPanel Orientation="Horizontal"><Path Data="{StaticResource SupplierIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="21" Height="21" Stretch="Uniform" /><TextBlock Text="往来资料与账户" Margin="14,0,0,0" VerticalAlignment="Center" /></StackPanel></ToggleButton>
+                                <StackPanel Visibility="{Binding IsChecked, ElementName=PartnerSection, Converter={StaticResource BooleanToVisibility}}">
+                                    <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}" IsChecked="{Binding IsSupplyActive, Mode=OneWay}" Command="{Binding NavigateSupplyCommand}" Padding="49,0" AutomationProperties.Name="供应商维护" AutomationProperties.AutomationId="NavigateSupplyExpanded" Visibility="{Binding CanSupply, Converter={StaticResource BooleanToVisibility}}">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Path Data="{StaticResource SupplierIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
+                                            <TextBlock Text="供应商维护" Margin="10,0,0,0" VerticalAlignment="Center" />
+                                        </StackPanel>
+                                    </ToggleButton>
+                                    <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}" IsChecked="{Binding IsShopActive, Mode=OneWay}" Command="{Binding NavigateShopCommand}" Padding="49,0" AutomationProperties.Name="客户维护" AutomationProperties.AutomationId="NavigateShopExpanded" Visibility="{Binding CanShop, Converter={StaticResource BooleanToVisibility}}">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Path Data="{StaticResource CustomerIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
+                                            <TextBlock Text="客户维护" Margin="10,0,0,0" VerticalAlignment="Center" />
+                                        </StackPanel>
+                                    </ToggleButton>
+                                    <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}" IsChecked="{Binding IsSalesManActive, Mode=OneWay}" Command="{Binding NavigateSalesManCommand}" Padding="49,0" AutomationProperties.Name="销售人员维护" AutomationProperties.AutomationId="NavigateSalesManExpanded" Visibility="{Binding CanSalesMan, Converter={StaticResource BooleanToVisibility}}">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Path Data="{StaticResource SalesManIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
+                                            <TextBlock Text="销售人员维护" Margin="10,0,0,0" VerticalAlignment="Center" />
+                                        </StackPanel>
+                                    </ToggleButton>
+                                    <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}" IsChecked="{Binding IsDictionaryActive, Mode=OneWay}" Command="{Binding NavigateDictionaryCommand}" Padding="49,0" Visibility="{Binding CanDictionary, Converter={StaticResource BooleanToVisibility}}" AutomationProperties.Name="字典维护">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Path Data="{StaticResource DictionaryIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
+                                            <TextBlock Text="字典维护" Margin="10,0,0,0" VerticalAlignment="Center" />
+                                        </StackPanel>
+                                    </ToggleButton>
+                                    <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}" IsChecked="{Binding IsUserActive, Mode=OneWay}" Command="{Binding NavigateUserCommand}" Padding="49,0" Visibility="{Binding CanManageUsers, Converter={StaticResource BooleanToVisibility}}" AutomationProperties.Name="用户维护" AutomationProperties.AutomationId="NavigateUserExpanded">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Path Data="{StaticResource UserManagementIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
+                                            <TextBlock Text="用户维护" Margin="10,0,0,0" VerticalAlignment="Center" />
+                                        </StackPanel>
+                                    </ToggleButton>
+                                </StackPanel>
+                                </StackPanel>
+                                <Button Style="{DynamicResource SidebarSectionButtonStyle}" Command="{Binding ToggleSettingsGroupCommand}" Margin="0,12,0,4" Padding="14,0" HorizontalContentAlignment="Stretch" Visibility="{Binding HasSettingsAccess, Converter={StaticResource BooleanToVisibility}}" AutomationProperties.Name="开合系统设置">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="Auto" />
                                             <ColumnDefinition Width="*" />
                                             <ColumnDefinition Width="22" />
                                         </Grid.ColumnDefinitions>
-                                        <Path Data="{StaticResource SettingsIconGeometry}"
-                                              Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"
-                                              StrokeThickness="1.7" Width="21" Height="21" Stretch="Uniform" />
+                                        <Path Data="{StaticResource SettingsIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}" StrokeThickness="1.7" Width="21" Height="21" Stretch="Uniform" />
                                         <TextBlock Grid.Column="1" Text="系统设置" Margin="14,0,0,0" VerticalAlignment="Center" />
-                                        <Path Grid.Column="2" Data="{StaticResource ChevronIconGeometry}"
-                                              Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"
-                                              StrokeThickness="1.9" Width="15" Height="15" Stretch="Uniform" />
+                                        <Path Grid.Column="2" Data="{StaticResource ChevronIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}" StrokeThickness="1.9" Width="15" Height="15" Stretch="Uniform" />
                                     </Grid>
                                 </Button>
                                 <StackPanel Visibility="{Binding IsSettingsGroupExpanded, Converter={StaticResource BooleanToVisibility}}">
-                                    <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}"
-                                                  IsChecked="{Binding IsProductMapActive, Mode=OneWay}"
-                                                  Command="{Binding NavigateProductMapCommand}" Padding="49,0"
-                                                  Visibility="{Binding CanProductMap, Converter={StaticResource BooleanToVisibility}}"
-                                                  AutomationProperties.Name="产品属性">
+                                    <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}" IsChecked="{Binding IsProductMapActive, Mode=OneWay}" Command="{Binding NavigateProductMapCommand}" Padding="49,0" Visibility="{Binding CanProductMap, Converter={StaticResource BooleanToVisibility}}" AutomationProperties.Name="产品属性">
                                         <StackPanel Orientation="Horizontal">
-                                            <Path Data="{StaticResource ProductMapIconGeometry}"
-                                                  Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}"
-                                                  StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
+                                            <Path Data="{StaticResource ProductMapIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
                                             <TextBlock Text="产品属性" Margin="10,0,0,0" VerticalAlignment="Center" />
+                                        </StackPanel>
+                                    </ToggleButton>
+                                    <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}" IsChecked="{Binding IsSystemSettingActive, Mode=OneWay}" Command="{Binding NavigateSystemSettingCommand}" Padding="49,0" Visibility="{Binding CanSystemSetting, Converter={StaticResource BooleanToVisibility}}" AutomationProperties.Name="系统设置" AutomationProperties.AutomationId="NavigateSystemSettingExpanded">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Path Data="{StaticResource BaseDataIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
+                                            <TextBlock Text="系统设置" Margin="10,0,0,0" VerticalAlignment="Center" />
+                                        </StackPanel>
+                                    </ToggleButton>
+                                    <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}" IsChecked="{Binding IsOperationLogActive, Mode=OneWay}" Command="{Binding NavigateOperationLogCommand}" Padding="49,0" Visibility="{Binding CanOperationLog, Converter={StaticResource BooleanToVisibility}}" AutomationProperties.Name="操作日志" AutomationProperties.AutomationId="NavigateOperationLogExpanded">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Path Data="{StaticResource BaseDataIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
+                                            <TextBlock Text="操作日志" Margin="10,0,0,0" VerticalAlignment="Center" />
                                         </StackPanel>
                                     </ToggleButton>
                                 </StackPanel>
                             </StackPanel>
-
-                            <StackPanel Margin="10,12,10,0"
-                                        Visibility="{Binding IsSidebarCompact, Converter={StaticResource BooleanToVisibility}}">
-                                <ToggleButton Style="{DynamicResource SidebarNavigationStyle}"
-                                              IsChecked="{Binding IsHomeActive, Mode=OneWay}"
-                                              Command="{Binding NavigateHomeCommand}" ToolTip="系统看板"
-                                              AutomationProperties.Name="系统看板" AutomationProperties.AutomationId="NavigateHomeCompact"
-                                              HorizontalContentAlignment="Center">
-                                    <Path Data="{StaticResource DashboardIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}"
-                                          StrokeThickness="1.7" Width="19" Height="19" Stretch="Uniform" />
+                            <StackPanel Margin="10,12,10,0" Visibility="{Binding IsSidebarCompact, Converter={StaticResource BooleanToVisibility}}">
+                                <ToggleButton Style="{DynamicResource SidebarNavigationStyle}" IsChecked="{Binding IsHomeActive, Mode=OneWay}" Command="{Binding NavigateHomeCommand}" ToolTip="系统看板" AutomationProperties.Name="系统看板" AutomationProperties.AutomationId="NavigateHomeCompact" HorizontalContentAlignment="Center">
+                                    <Path Data="{StaticResource DashboardIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="19" Height="19" Stretch="Uniform" />
                                 </ToggleButton>
-                                <Grid Margin="0,12,0,0"
-                                      Visibility="{Binding HasBaseDataAccess, Converter={StaticResource BooleanToVisibility}}">
-                                    <ToggleButton x:Name="CompactBaseDataButton"
-                                                  Style="{DynamicResource SidebarNavigationStyle}"
-                                                  IsChecked="{Binding IsCompactBaseDataMenuOpen, Mode=TwoWay}"
-                                                  ToolTip="基础数据" HorizontalContentAlignment="Center"
-                                                  AutomationProperties.Name="基础数据" AutomationProperties.AutomationId="OpenCompactBaseDataMenu">
-                                        <Path Data="{StaticResource BaseDataIconGeometry}"
-                                              Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}"
-                                              StrokeThickness="1.7" Width="19" Height="19" Stretch="Uniform" />
+                                <Grid Margin="0,12,0,0" Visibility="{Binding HasBaseDataAccess, Converter={StaticResource BooleanToVisibility}}">
+                                    <ToggleButton x:Name="CompactBaseDataButton" Style="{DynamicResource SidebarNavigationStyle}" IsChecked="{Binding IsCompactBaseDataMenuOpen, Mode=TwoWay}" ToolTip="业务管理" HorizontalContentAlignment="Center" AutomationProperties.Name="业务管理" AutomationProperties.AutomationId="OpenCompactBusinessMenu">
+                                        <Path Data="{StaticResource BaseDataIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="19" Height="19" Stretch="Uniform" />
                                     </ToggleButton>
-                                    <Popup PlacementTarget="{Binding ElementName=CompactBaseDataButton}"
-                                           Placement="Right" HorizontalOffset="8" StaysOpen="False"
-                                           AllowsTransparency="True"
-                                           IsOpen="{Binding IsCompactBaseDataMenuOpen, Mode=TwoWay}">
-                                        <Border Width="202" Padding="8" CornerRadius="8"
-                                                Background="{DynamicResource SidebarBrush}"
-                                                BorderBrush="{DynamicResource SidebarHoverBrush}" BorderThickness="1">
+                                    <Popup PlacementTarget="{Binding ElementName=CompactBaseDataButton}" Placement="Right" HorizontalOffset="8" StaysOpen="False" AllowsTransparency="True" IsOpen="{Binding IsCompactBaseDataMenuOpen, Mode=TwoWay}">
+                                        <Border Width="202" Padding="8" CornerRadius="8" Background="{DynamicResource SidebarBrush}" BorderBrush="{DynamicResource SidebarHoverBrush}" BorderThickness="1">
                                             <StackPanel>
-                                                <TextBlock Text="基础数据" Margin="12,7,0,8"
-                                                           Foreground="{DynamicResource SidebarSectionBrush}"
-                                                           FontSize="13" />
-                                                <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}"
-                                                              IsChecked="{Binding IsStoreHouseActive, Mode=OneWay}"
-                                                              Command="{Binding NavigateStoreHouseCommand}" Padding="12,0"
-                                                              Visibility="{Binding CanStoreHouse, Converter={StaticResource BooleanToVisibility}}"
-                                                              AutomationProperties.Name="仓库维护" AutomationProperties.AutomationId="NavigateStoreHouseCompact">
+                                                <TextBlock Text="业务管理" Margin="12,7,0,8" Foreground="{DynamicResource SidebarSectionBrush}" FontSize="13" />
+                                                <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}" IsChecked="{Binding IsStoreHouseActive, Mode=OneWay}" Command="{Binding NavigateStoreHouseCommand}" Padding="12,0" Visibility="{Binding CanStoreHouse, Converter={StaticResource BooleanToVisibility}}" AutomationProperties.Name="仓库维护" AutomationProperties.AutomationId="NavigateStoreHouseCompact">
                                                     <StackPanel Orientation="Horizontal">
-                                                        <Path Data="{StaticResource WarehouseIconGeometry}"
-                                                              Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}"
-                                                              StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
+                                                        <Path Data="{StaticResource WarehouseIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
                                                         <TextBlock Text="仓库维护" Margin="10,0,0,0" VerticalAlignment="Center" />
                                                     </StackPanel>
                                                 </ToggleButton>
-                                                <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}"
-                                                              IsChecked="{Binding IsSupplyActive, Mode=OneWay}"
-                                                              Command="{Binding NavigateSupplyCommand}" Padding="12,0"
-                                                              Visibility="{Binding CanSupply, Converter={StaticResource BooleanToVisibility}}"
-                                                              AutomationProperties.Name="供应商维护" AutomationProperties.AutomationId="NavigateSupplyCompact">
+                                                <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}" IsChecked="{Binding IsProductActive, Mode=OneWay}" Command="{Binding NavigateProductCommand}" Padding="12,0" Visibility="{Binding CanProduct, Converter={StaticResource BooleanToVisibility}}" AutomationProperties.Name="产品资料" AutomationProperties.AutomationId="NavigateProductCompact">
                                                     <StackPanel Orientation="Horizontal">
-                                                        <Path Data="{StaticResource SupplierIconGeometry}"
-                                                              Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}"
-                                                              StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
+                                                        <Path Data="{StaticResource ProductMapIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
+                                                        <TextBlock Text="产品资料" Margin="10,0,0,0" VerticalAlignment="Center" />
+                                                    </StackPanel>
+                                                </ToggleButton>
+                                                <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}" IsChecked="{Binding IsBarCodeGenerationActive, Mode=OneWay}" Command="{Binding NavigateBarCodeGenerationCommand}" Padding="12,0" Visibility="{Binding CanBarCodeGeneration, Converter={StaticResource BooleanToVisibility}}" AutomationProperties.Name="条码生成" AutomationProperties.AutomationId="NavigateBarCodeGenerationCompact">
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Path Data="{StaticResource ProductMapIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
+                                                        <TextBlock Text="条码生成" Margin="10,0,0,0" VerticalAlignment="Center" />
+                                                    </StackPanel>
+                                                </ToggleButton>
+                                                <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}" IsChecked="{Binding IsStockActive, Mode=OneWay}" Command="{Binding NavigateStockCommand}" Padding="12,0" Visibility="{Binding CanStock, Converter={StaticResource BooleanToVisibility}}" AutomationProperties.Name="库存查询" AutomationProperties.AutomationId="NavigateStockCompact">
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Path Data="{StaticResource WarehouseIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
+                                                        <TextBlock Text="库存查询" Margin="10,0,0,0" VerticalAlignment="Center" />
+                                                    </StackPanel>
+                                                </ToggleButton>
+                                                <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}" IsChecked="{Binding IsStockInActive, Mode=OneWay}" Command="{Binding NavigateStockInCommand}" Padding="12,0" Visibility="{Binding CanStockIn, Converter={StaticResource BooleanToVisibility}}" AutomationProperties.Name="采购入库" AutomationProperties.AutomationId="NavigateStockInCompact">
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Path Data="{StaticResource WarehouseIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
+                                                        <TextBlock Text="采购入库" Margin="10,0,0,0" VerticalAlignment="Center" />
+                                                    </StackPanel>
+                                                </ToggleButton>
+                                                <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}" IsChecked="{Binding IsStockIssueActive, Mode=OneWay}" Command="{Binding NavigateStockIssueCommand}" Padding="12,0" Visibility="{Binding CanStockIssue, Converter={StaticResource BooleanToVisibility}}" AutomationProperties.Name="销售出库" AutomationProperties.AutomationId="NavigateStockIssueCompact">
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Path Data="{StaticResource WarehouseIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
+                                                        <TextBlock Text="销售出库" Margin="10,0,0,0" VerticalAlignment="Center" />
+                                                    </StackPanel>
+                                                </ToggleButton>
+                                                <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}" IsChecked="{Binding IsSalesOrderReviewActive, Mode=OneWay}" Command="{Binding NavigateSalesOrderReviewCommand}" Padding="12,0" Visibility="{Binding CanSalesOrderReview, Converter={StaticResource BooleanToVisibility}}" AutomationProperties.Name="订单审核" AutomationProperties.AutomationId="NavigateSalesOrderReviewCompact">
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Path Data="{StaticResource WarehouseIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
+                                                        <TextBlock Text="订单审核" Margin="10,0,0,0" VerticalAlignment="Center" />
+                                                    </StackPanel>
+                                                </ToggleButton>
+                                                <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}" IsChecked="{Binding IsStockReturnActive, Mode=OneWay}" Command="{Binding NavigateStockReturnCommand}" Padding="12,0" Visibility="{Binding CanStockReturn, Converter={StaticResource BooleanToVisibility}}" AutomationProperties.Name="客户退货" AutomationProperties.AutomationId="NavigateStockReturnCompact">
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Path Data="{StaticResource WarehouseIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
+                                                        <TextBlock Text="客户退货" Margin="10,0,0,0" VerticalAlignment="Center" />
+                                                    </StackPanel>
+                                                </ToggleButton>
+                                                <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}" IsChecked="{Binding IsBusinessDocumentActive, Mode=OneWay}" Command="{Binding NavigateBusinessDocumentCommand}" Padding="12,0" Visibility="{Binding CanBusinessDocument, Converter={StaticResource BooleanToVisibility}}" AutomationProperties.Name="业务单据" AutomationProperties.AutomationId="NavigateBusinessDocumentCompact">
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Path Data="{StaticResource WarehouseIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
+                                                        <TextBlock Text="业务单据" Margin="10,0,0,0" VerticalAlignment="Center" />
+                                                    </StackPanel>
+                                                </ToggleButton>
+                                                <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}" IsChecked="{Binding IsSupplyActive, Mode=OneWay}" Command="{Binding NavigateSupplyCommand}" Padding="12,0" Visibility="{Binding CanSupply, Converter={StaticResource BooleanToVisibility}}" AutomationProperties.Name="供应商维护" AutomationProperties.AutomationId="NavigateSupplyCompact">
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Path Data="{StaticResource SupplierIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
                                                         <TextBlock Text="供应商维护" Margin="10,0,0,0" VerticalAlignment="Center" />
                                                     </StackPanel>
                                                 </ToggleButton>
-                                                <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}"
-                                                              IsChecked="{Binding IsShopActive, Mode=OneWay}"
-                                                              Command="{Binding NavigateShopCommand}" Padding="12,0"
-                                                              Visibility="{Binding CanShop, Converter={StaticResource BooleanToVisibility}}"
-                                                              AutomationProperties.Name="客户维护" AutomationProperties.AutomationId="NavigateShopCompact">
+                                                <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}" IsChecked="{Binding IsShopActive, Mode=OneWay}" Command="{Binding NavigateShopCommand}" Padding="12,0" Visibility="{Binding CanShop, Converter={StaticResource BooleanToVisibility}}" AutomationProperties.Name="客户维护" AutomationProperties.AutomationId="NavigateShopCompact">
                                                     <StackPanel Orientation="Horizontal">
-                                                        <Path Data="{StaticResource CustomerIconGeometry}"
-                                                              Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}"
-                                                              StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
+                                                        <Path Data="{StaticResource CustomerIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
                                                         <TextBlock Text="客户维护" Margin="10,0,0,0" VerticalAlignment="Center" />
                                                     </StackPanel>
                                                 </ToggleButton>
-                                                <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}"
-                                                              IsChecked="{Binding IsSalesManActive, Mode=OneWay}"
-                                                              Command="{Binding NavigateSalesManCommand}" Padding="12,0"
-                                                              Visibility="{Binding CanSalesMan, Converter={StaticResource BooleanToVisibility}}"
-                                                              AutomationProperties.Name="销售人员维护" AutomationProperties.AutomationId="NavigateSalesManCompact">
+                                                <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}" IsChecked="{Binding IsSalesManActive, Mode=OneWay}" Command="{Binding NavigateSalesManCommand}" Padding="12,0" Visibility="{Binding CanSalesMan, Converter={StaticResource BooleanToVisibility}}" AutomationProperties.Name="销售人员维护" AutomationProperties.AutomationId="NavigateSalesManCompact">
                                                     <StackPanel Orientation="Horizontal">
-                                                        <Path Data="{StaticResource SalesManIconGeometry}"
-                                                              Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}"
-                                                              StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
+                                                        <Path Data="{StaticResource SalesManIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
                                                         <TextBlock Text="销售人员维护" Margin="10,0,0,0" VerticalAlignment="Center" />
                                                     </StackPanel>
                                                 </ToggleButton>
-                                                <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}"
-                                                              IsChecked="{Binding IsDictionaryActive, Mode=OneWay}"
-                                                              Command="{Binding NavigateDictionaryCommand}" Padding="12,0"
-                                                              Visibility="{Binding CanDictionary, Converter={StaticResource BooleanToVisibility}}"
-                                                              AutomationProperties.Name="字典维护">
+                                                <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}" IsChecked="{Binding IsDictionaryActive, Mode=OneWay}" Command="{Binding NavigateDictionaryCommand}" Padding="12,0" Visibility="{Binding CanDictionary, Converter={StaticResource BooleanToVisibility}}" AutomationProperties.Name="字典维护">
                                                     <StackPanel Orientation="Horizontal">
-                                                        <Path Data="{StaticResource DictionaryIconGeometry}"
-                                                              Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}"
-                                                              StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
+                                                        <Path Data="{StaticResource DictionaryIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
                                                         <TextBlock Text="字典维护" Margin="10,0,0,0" VerticalAlignment="Center" />
                                                     </StackPanel>
                                                 </ToggleButton>
-                                                <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}"
-                                                              IsChecked="{Binding IsUserActive, Mode=OneWay}"
-                                                              Command="{Binding NavigateUserCommand}" Padding="12,0"
-                                                              Visibility="{Binding CanManageUsers, Converter={StaticResource BooleanToVisibility}}"
-                                                              AutomationProperties.Name="用户维护" AutomationProperties.AutomationId="NavigateUserCompact">
+                                                <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}" IsChecked="{Binding IsUserActive, Mode=OneWay}" Command="{Binding NavigateUserCommand}" Padding="12,0" Visibility="{Binding CanManageUsers, Converter={StaticResource BooleanToVisibility}}" AutomationProperties.Name="用户维护" AutomationProperties.AutomationId="NavigateUserCompact">
                                                     <StackPanel Orientation="Horizontal">
-                                                        <Path Data="{StaticResource UserManagementIconGeometry}"
-                                                              Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}"
-                                                              StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
+                                                        <Path Data="{StaticResource UserManagementIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
                                                         <TextBlock Text="用户维护" Margin="10,0,0,0" VerticalAlignment="Center" />
                                                     </StackPanel>
                                                 </ToggleButton>
@@ -447,36 +523,30 @@
                                         </Border>
                                     </Popup>
                                 </Grid>
-                                <Grid Visibility="{Binding CanProductMap, Converter={StaticResource BooleanToVisibility}}">
-                                    <ToggleButton x:Name="CompactSettingsButton"
-                                                  Style="{DynamicResource SidebarNavigationStyle}"
-                                                  IsChecked="{Binding IsCompactSettingsMenuOpen, Mode=TwoWay}"
-                                                  ToolTip="系统设置" HorizontalContentAlignment="Center"
-                                                  AutomationProperties.Name="系统设置" AutomationProperties.AutomationId="OpenCompactSettingsMenu">
-                                        <Path Data="{StaticResource SettingsIconGeometry}"
-                                              Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}"
-                                              StrokeThickness="1.7" Width="19" Height="19" Stretch="Uniform" />
+                                <Grid Visibility="{Binding HasSettingsAccess, Converter={StaticResource BooleanToVisibility}}">
+                                    <ToggleButton x:Name="CompactSettingsButton" Style="{DynamicResource SidebarNavigationStyle}" IsChecked="{Binding IsCompactSettingsMenuOpen, Mode=TwoWay}" ToolTip="系统设置" HorizontalContentAlignment="Center" AutomationProperties.Name="系统设置" AutomationProperties.AutomationId="OpenCompactSettingsMenu">
+                                        <Path Data="{StaticResource SettingsIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="19" Height="19" Stretch="Uniform" />
                                     </ToggleButton>
-                                    <Popup PlacementTarget="{Binding ElementName=CompactSettingsButton}"
-                                           Placement="Right" HorizontalOffset="8" StaysOpen="False"
-                                           AllowsTransparency="True"
-                                           IsOpen="{Binding IsCompactSettingsMenuOpen, Mode=TwoWay}">
-                                        <Border Width="202" Padding="8" CornerRadius="8"
-                                                Background="{DynamicResource SidebarBrush}"
-                                                BorderBrush="{DynamicResource SidebarHoverBrush}" BorderThickness="1">
+                                    <Popup PlacementTarget="{Binding ElementName=CompactSettingsButton}" Placement="Right" HorizontalOffset="8" StaysOpen="False" AllowsTransparency="True" IsOpen="{Binding IsCompactSettingsMenuOpen, Mode=TwoWay}">
+                                        <Border Width="202" Padding="8" CornerRadius="8" Background="{DynamicResource SidebarBrush}" BorderBrush="{DynamicResource SidebarHoverBrush}" BorderThickness="1">
                                             <StackPanel>
-                                                <TextBlock Text="系统设置" Margin="12,7,0,8"
-                                                           Foreground="{DynamicResource SidebarSectionBrush}"
-                                                           FontSize="13" />
-                                                <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}"
-                                                              IsChecked="{Binding IsProductMapActive, Mode=OneWay}"
-                                                              Command="{Binding NavigateProductMapCommand}" Padding="12,0"
-                                                              AutomationProperties.Name="产品属性" AutomationProperties.AutomationId="NavigateProductMapCompact">
+                                                <TextBlock Text="系统设置" Margin="12,7,0,8" Foreground="{DynamicResource SidebarSectionBrush}" FontSize="13" />
+                                                <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}" IsChecked="{Binding IsProductMapActive, Mode=OneWay}" Command="{Binding NavigateProductMapCommand}" Padding="12,0" AutomationProperties.Name="产品属性" AutomationProperties.AutomationId="NavigateProductMapCompact">
                                                     <StackPanel Orientation="Horizontal">
-                                                        <Path Data="{StaticResource ProductMapIconGeometry}"
-                                                              Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}"
-                                                              StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
+                                                        <Path Data="{StaticResource ProductMapIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
                                                         <TextBlock Text="产品属性" Margin="10,0,0,0" VerticalAlignment="Center" />
+                                                    </StackPanel>
+                                                </ToggleButton>
+                                                <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}" IsChecked="{Binding IsSystemSettingActive, Mode=OneWay}" Command="{Binding NavigateSystemSettingCommand}" Padding="12,0" Visibility="{Binding CanSystemSetting, Converter={StaticResource BooleanToVisibility}}" AutomationProperties.Name="系统设置" AutomationProperties.AutomationId="NavigateSystemSettingCompact">
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Path Data="{StaticResource BaseDataIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
+                                                        <TextBlock Text="系统设置" Margin="10,0,0,0" VerticalAlignment="Center" />
+                                                    </StackPanel>
+                                                </ToggleButton>
+                                                <ToggleButton Style="{DynamicResource SidebarSubNavigationStyle}" IsChecked="{Binding IsOperationLogActive, Mode=OneWay}" Command="{Binding NavigateOperationLogCommand}" Padding="12,0" Visibility="{Binding CanOperationLog, Converter={StaticResource BooleanToVisibility}}" AutomationProperties.Name="操作日志" AutomationProperties.AutomationId="NavigateOperationLogCompact">
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Path Data="{StaticResource BaseDataIconGeometry}" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}" StrokeThickness="1.7" Width="18" Height="18" Stretch="Uniform" />
+                                                        <TextBlock Text="操作日志" Margin="10,0,0,0" VerticalAlignment="Center" />
                                                     </StackPanel>
                                                 </ToggleButton>
                                             </StackPanel>
@@ -486,49 +556,32 @@
                             </StackPanel>
                         </Grid>
                     </ScrollViewer>
-
                 </Grid>
             </Border>
-
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="78" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <Border Background="{DynamicResource SurfaceBrush}"
-                        BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0,0,0,1">
+                <Border Background="{DynamicResource SurfaceBrush}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0,0,0,1">
                     <Grid Margin="26,0">
-                        <TextBlock Text="{Binding PageTitle}" VerticalAlignment="Center"
-                                   Style="{DynamicResource PageTitleTextStyle}" />
+                        <TextBlock Text="{Binding PageTitle}" VerticalAlignment="Center" Style="{DynamicResource PageTitleTextStyle}" />
                         <Grid HorizontalAlignment="Right" VerticalAlignment="Center">
-                            <ToggleButton x:Name="UserMenuButton" Style="{DynamicResource UserMenuToggleStyle}"
-                                          IsChecked="{Binding IsUserMenuOpen, Mode=TwoWay}"
-                                          AutomationProperties.Name="用户信息" AutomationProperties.AutomationId="UserMenu"
-                                          ToolTip="查看业务用户信息">
+                            <ToggleButton x:Name="UserMenuButton" Style="{DynamicResource UserMenuToggleStyle}" IsChecked="{Binding IsUserMenuOpen, Mode=TwoWay}" AutomationProperties.Name="用户信息" AutomationProperties.AutomationId="UserMenu" ToolTip="查看业务用户信息">
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding CurrentUserName}" VerticalAlignment="Center"
-                                               Margin="0,0,10,0" FontWeight="SemiBold" />
-                                    <Border Width="34" Height="34" Background="{DynamicResource CanvasBrush}"
-                                            CornerRadius="17" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1">
-                                        <TextBlock Text="{Binding CurrentUserInitial}" Foreground="{DynamicResource PrimaryBrush}"
-                                                   FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    <TextBlock Text="{Binding CurrentUserName}" VerticalAlignment="Center" Margin="0,0,10,0" FontWeight="SemiBold" />
+                                    <Border Width="34" Height="34" Background="{DynamicResource CanvasBrush}" CornerRadius="17" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1">
+                                        <TextBlock Text="{Binding CurrentUserInitial}" Foreground="{DynamicResource PrimaryBrush}" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" />
                                     </Border>
                                 </StackPanel>
                             </ToggleButton>
-                            <Popup PlacementTarget="{Binding ElementName=UserMenuButton}"
-                                   Placement="Bottom" HorizontalOffset="-8" VerticalOffset="8"
-                                   IsOpen="{Binding IsUserMenuOpen, Mode=TwoWay}"
-                                   StaysOpen="False" AllowsTransparency="True">
-                                <Border Width="262" Padding="18" Background="{DynamicResource SurfaceBrush}"
-                                        BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1"
-                                        CornerRadius="9">
+                            <Popup PlacementTarget="{Binding ElementName=UserMenuButton}" Placement="Bottom" HorizontalOffset="-8" VerticalOffset="8" IsOpen="{Binding IsUserMenuOpen, Mode=TwoWay}" StaysOpen="False" AllowsTransparency="True">
+                                <Border Width="262" Padding="18" Background="{DynamicResource SurfaceBrush}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" CornerRadius="9">
                                     <StackPanel>
                                         <TextBlock Text="用户信息" FontWeight="SemiBold" FontSize="14" />
-                                        <TextBlock Text="业务用户" Margin="0,16,0,3"
-                                                   Foreground="{DynamicResource MutedTextBrush}" />
+                                        <TextBlock Text="业务用户" Margin="0,16,0,3" Foreground="{DynamicResource MutedTextBrush}" />
                                         <TextBlock Text="{Binding CurrentUserName}" />
-                                        <Border BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0,1,0,0"
-                                                Margin="0,14,0,12" />
+                                        <Border BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0,1,0,0" Margin="0,14,0,12" />
                                         <TextBlock Text="账号" Foreground="{DynamicResource MutedTextBrush}" />
                                         <TextBlock Text="{Binding CurrentUserCode}" Margin="0,3,0,0" />
                                         <TextBlock Text="角色" Margin="0,12,0,3" Foreground="{DynamicResource MutedTextBrush}" />
@@ -539,10 +592,7 @@
                         </Grid>
                     </Grid>
                 </Border>
-                <TabControl Grid.Row="1" ItemsSource="{Binding Tabs}"
-                            SelectedItem="{Binding SelectedTab, Mode=TwoWay}"
-                            AutomationProperties.AutomationId="WorkspaceTabs"
-                            Style="{StaticResource WorkspaceTabControlStyle}">
+                <TabControl Grid.Row="1" ItemsSource="{Binding Tabs}" SelectedItem="{Binding SelectedTab, Mode=TwoWay}" AutomationProperties.AutomationId="WorkspaceTabs" Style="{StaticResource WorkspaceTabControlStyle}">
                     <TabControl.ItemContainerStyle>
                         <Style TargetType="TabItem" BasedOn="{StaticResource WorkspaceTabItemStyle}" />
                     </TabControl.ItemContainerStyle>
@@ -550,11 +600,7 @@
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding Title}" VerticalAlignment="Center" />
-                                <Button Content="×" Style="{StaticResource WorkspaceTabCloseButtonStyle}"
-                                        Command="{Binding DataContext.CloseTabCommand, RelativeSource={RelativeSource AncestorType=TabControl}}"
-                                        CommandParameter="{Binding}" ToolTip="关闭页签"
-                                        AutomationProperties.AutomationId="CloseWorkspaceTab"
-                                        Visibility="{Binding CanClose, Converter={StaticResource BooleanToVisibility}}" />
+                                <Button Content="×" Style="{StaticResource WorkspaceTabCloseButtonStyle}" Command="{Binding DataContext.CloseTabCommand, RelativeSource={RelativeSource AncestorType=TabControl}}" CommandParameter="{Binding}" ToolTip="关闭页签" AutomationProperties.AutomationId="CloseWorkspaceTab" Visibility="{Binding CanClose, Converter={StaticResource BooleanToVisibility}}" />
                             </StackPanel>
                         </DataTemplate>
                     </TabControl.ItemTemplate>

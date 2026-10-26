@@ -15,6 +15,7 @@ namespace Psdr.Dals.Admin
         public string InitialPassword { get; set; }
     }
 
+
     /// <summary>
     /// Registers an agent, provisions its isolated database and SQL principal, and seeds its business login.
     /// Runs only in the administrator process with Windows SQL administrative rights.
@@ -217,7 +218,7 @@ namespace Psdr.Dals.Admin
                 foreach (var script in new[]
                 {
                     "001_StoreHouse.sql", "002_User.sql", "003_LegacyTables.sql", "004_LegacyViews.sql",
-                    "005_TenantFunction.sql"
+                    "005_TenantFunction.sql", "006_Inventory.sql", "007_StockBarcodeUnique.sql"
                 })
                 {
                     var resourceName = "Psdr.Dals.Schema.Tenant." + script;

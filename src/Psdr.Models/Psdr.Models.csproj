@@ -62,6 +62,7 @@
     <Compile Include="Entities\Tenant\SalesPerson.cs" />
     <Compile Include="Entities\Tenant\Shop.cs" />
     <Compile Include="Entities\Tenant\Stock.cs" />
+    <Compile Include="Entities\Tenant\StockLedger.cs" />
     <Compile Include="Entities\Tenant\StorehouseRecord.cs" />
     <Compile Include="Entities\Tenant\StorehouseRecordInfo.cs" />
     <Compile Include="Entities\Tenant\Supply.cs" />

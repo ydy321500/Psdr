@@ -43,6 +43,11 @@ namespace Psdr.Models.Entities
         public int? SupplyID { get; set; }
 
         /// <summary>
+        /// 本次入库的目标仓库编号。
+        /// </summary>
+        public int? StoreHouseID { get; set; }
+
+        /// <summary>
         /// Desc:
         /// Default:
         /// Nullable:True

@@ -59,8 +59,7 @@
                             <TextBlock Text="代理列表" FontSize="20" FontWeight="SemiBold" />
                             <TextBlock Text="主库登记 · 分库状态" FontSize="13" Foreground="#72869A" Margin="0,4,0,0" />
                         </StackPanel>
-                        <Button Grid.Column="1" Content="刷新" Command="{Binding RefreshCommand}"
-                                VerticalAlignment="Center" MinWidth="72" />
+                        <StackPanel Grid.Column="1" Orientation="Horizontal"><Button Content="管理日志" Command="{Binding OpenLogCommand}" VerticalAlignment="Center" MinWidth="82"/><Button Content="刷新" Command="{Binding RefreshCommand}" VerticalAlignment="Center" MinWidth="72" Margin="8,0,0,0"/></StackPanel>
                     </Grid>
                     <ListBox ItemsSource="{Binding Agents}" SelectedItem="{Binding SelectedAgent}"
                              BorderThickness="0" Margin="8,0,8,8" FontSize="15">

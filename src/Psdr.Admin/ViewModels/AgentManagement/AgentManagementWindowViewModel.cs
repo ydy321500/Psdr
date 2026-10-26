@@ -1,8 +1,10 @@
 using Prism.Commands;
+using Prism.Ioc;
 using Prism.Mvvm;
 using Psdr.Admin.Services;
 using Psdr.Dals.Admin;
 using Psdr.Models.Entities;
+using Psdr.Admin.Views.AgentManagement;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -29,6 +31,9 @@ namespace Psdr.Admin.ViewModels.AgentManagement
         private readonly AgentDAL agents;
         private readonly TenantProvisioningService provisioning;
         private readonly AgentFunctionService agentFunctions;
+        private readonly AdminLogDAL adminLogs;
+        private readonly IContainerProvider container;
+        private readonly AdminSession session;
         private Agent selectedAgent;
         private AgentFunction selectedFunction;
         private long editingFunctionId;
@@ -50,13 +55,16 @@ namespace Psdr.Admin.ViewModels.AgentManagement
         /// 初始化AgentManagementWindowViewModel，设置数据依赖、界面命令和初始状态。
         /// </summary>
         public AgentManagementWindowViewModel(AgentDAL agents, TenantProvisioningService provisioning,
-            AgentFunctionService agentFunctions,
-            AdminSession session)
+            AgentFunctionService agentFunctions, AdminLogDAL adminLogs,
+            IContainerProvider container, AdminSession session)
         {
             if (!session.IsAuthenticated) throw new InvalidOperationException("请先登录管理员账号。" );
             this.agents = agents;
             this.provisioning = provisioning;
             this.agentFunctions = agentFunctions;
+            this.adminLogs = adminLogs;
+            this.container = container;
+            this.session = session;
             Agents = new ObservableCollection<Agent>();
             Functions = new ObservableCollection<AgentFunction>();
             FunctionTypes = new[]
@@ -70,6 +78,7 @@ namespace Psdr.Admin.ViewModels.AgentManagement
             RetryCommand = new DelegateCommand(async () => await RunAsync(RetryAsync));
             ToggleActiveCommand = new DelegateCommand(async () => await RunAsync(ToggleActiveAsync));
             SaveFunctionCommand = new DelegateCommand(async () => await RunAsync(SaveFunctionAsync));
+            OpenLogCommand = new DelegateCommand(OpenLog);
             ClearFunctionEditor();
             MinimizeCommand = new DelegateCommand(() => SetWindowState(WindowState.Minimized));
             ToggleMaximizeCommand = new DelegateCommand(() =>
@@ -89,6 +98,7 @@ namespace Psdr.Admin.ViewModels.AgentManagement
         public DelegateCommand RetryCommand { get; }
         public DelegateCommand ToggleActiveCommand { get; }
         public DelegateCommand SaveFunctionCommand { get; }
+        public DelegateCommand OpenLogCommand { get; }
         public DelegateCommand MinimizeCommand { get; }
         public DelegateCommand ToggleMaximizeCommand { get; }
         public DelegateCommand CloseCommand { get; }
@@ -209,9 +219,20 @@ namespace Psdr.Admin.ViewModels.AgentManagement
                 FunctionType = FunctionType, State = FunctionEnabled ? 1 : 0
             };
             await Task.Run(() => agentFunctions.Save(request));
+            await WriteLogAsync("保存代理功能", $"代理：{SelectedAgent.AgentName}；功能：{request.FunctionName}；状态：{(request.State == 1 ? "启用" : "停用")}。");
             await LoadFunctionsAsync(request.AgentID);
             ClearFunctionEditor();
             Notice = "代理功能已保存。";
+        }
+
+        /// <summary>
+        /// 打开主库管理审计日志窗口。
+        /// </summary>
+        private void OpenLog()
+        {
+            var window = container.Resolve<AdminLogWindow>();
+            window.Owner = Application.Current.MainWindow;
+            window.ShowDialog();
         }
 
         /// <summary>
@@ -239,6 +260,7 @@ namespace Psdr.Admin.ViewModels.AgentManagement
             await RefreshAsync();
             SelectedAgent = Agents.FirstOrDefault(x => x.AgentID == result.AgentID);
             InitialCredentials = "业务登录账号：admin    默认密码：" + result.InitialPassword;
+            await WriteLogAsync("创建代理及分库", $"代理：{request.AgentName}；代理号：{result.AgentID:D}。已创建分库、专用 SQL 账号及业务管理员。");
             Notice = "代理库、专用 SQL 账号和业务管理员已创建。";
         }
 
@@ -252,6 +274,7 @@ namespace Psdr.Admin.ViewModels.AgentManagement
             update.AgentID = SelectedAgent.AgentID;
             if (string.IsNullOrWhiteSpace(update.AgentName)) throw new InvalidOperationException("请输入代理名称。" );
             await Task.Run(() => agents.UpdateDetails(update));
+            await WriteLogAsync("保存代理资料", $"代理：{update.AgentName}；代理号：{update.AgentID:D}。");
             await RefreshAsync();
             Notice = "代理资料已保存。";
         }
@@ -265,6 +288,7 @@ namespace Psdr.Admin.ViewModels.AgentManagement
             var result = await Task.Run(() => provisioning.Retry(SelectedAgent.AgentID));
             await RefreshAsync();
             InitialCredentials = "业务登录账号：admin    默认密码：" + result.InitialPassword;
+            await WriteLogAsync("重试开通代理", $"代理：{SelectedAgent.AgentName}；代理号：{result.AgentID:D}。开通已完成。");
             Notice = "代理开通已完成。";
         }
 
@@ -276,6 +300,8 @@ namespace Psdr.Admin.ViewModels.AgentManagement
             if (IsNew) throw new InvalidOperationException("请先选择代理。" );
             var active = SelectedAgent.State != 1;
             await Task.Run(() => provisioning.SetActive(SelectedAgent.AgentID, active));
+            await WriteLogAsync(active ? "启用代理" : "停用代理",
+                $"代理：{SelectedAgent.AgentName}；代理号：{SelectedAgent.AgentID:D}。");
             await RefreshAsync();
             Notice = active ? "代理已启用。" : "代理已停用，新的 SQL 连接将被拒绝。";
         }
@@ -288,6 +314,21 @@ namespace Psdr.Admin.ViewModels.AgentManagement
             AgentName = AgentName?.Trim(), Contact = Contact?.Trim(), Tel = Tel?.Trim(),
             AgentAddress = Address?.Trim(), AgentProvince = Province?.Trim(), AgentCity = City?.Trim()
         };
+
+        /// <summary>
+        /// 异步写入主库管理审计日志；日志失败不影响已成功完成的业务操作。
+        /// </summary>
+        private async Task WriteLogAsync(string eventName, string info)
+        {
+            try
+            {
+                await Task.Run(() => adminLogs.Write(session.DisplayName, eventName, info));
+            }
+            catch
+            {
+                // 审计表不可用时不回滚已经成功完成的代理操作。
+            }
+        }
 
         /// <summary>
         /// 清空编辑区并重置表单状态。

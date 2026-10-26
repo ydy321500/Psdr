@@ -38,6 +38,11 @@ namespace Psdr.Models.Entities
         public int? ProductID { get; set; }
 
         /// <summary>
+        /// 当前库存余额所属的仓库编号。
+        /// </summary>
+        public int? StoreHouseID { get; set; }
+
+        /// <summary>
         /// Desc:
         /// Default:
         /// Nullable:True

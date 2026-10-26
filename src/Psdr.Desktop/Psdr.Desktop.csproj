@@ -85,6 +85,26 @@
     <Page Include="Views\Common\ConfirmationWindow.xaml" />
     <Page Include="Views\HomeView.xaml" />
     <Page Include="Views\BaseData\StoreHouse\StoreHouseView.xaml" />
+    <Page Include="Views\BaseData\Product\ProductView.xaml" />
+    <Page Include="Views\BaseData\Product\BarCodeView.xaml" />
+    <Page Include="Views\Stock\StockView.xaml" />
+    <Page Include="Views\Stock\StockInView.xaml" />
+    <Page Include="Views\Stock\StockIssueView.xaml" />
+    <Page Include="Views\Stock\BusinessDocumentView.xaml" />
+    <Page Include="Views\Stock\SalesOrderReviewView.xaml" />
+    <Page Include="Views\Stock\BarCodeBindingView.xaml" />
+    <Page Include="Views\Stock\InventoryCheckView.xaml" />
+    <Page Include="Views\Stock\BarcodeInventoryView.xaml" />
+    <Page Include="Views\Stock\RedPacketView.xaml" />
+    <Page Include="Views\Finance\FinanceView.xaml" />
+    <Page Include="Views\Finance\PersonPriceView.xaml" />
+    <Page Include="Views\Set\IniView.xaml" />
+    <Page Include="Views\Set\LogView.xaml" />
+    <Page Include="Views\Market\MarketProductView.xaml" />
+    <Page Include="Views\Market\MarketUserView.xaml" />
+    <Page Include="Views\Market\MarketIndentView.xaml" />
+    <Page Include="Views\Report\InventoryReportView.xaml" />
+    <Page Include="Views\Report\ReportStyleView.xaml" />
       <Page Include="Views\BaseData\Supply\SupplyView.xaml" />
     <Page Include="Views\BaseData\Shop\ShopView.xaml" />
     <Page Include="Views\BaseData\SalesMan\SalesManView.xaml" />
@@ -112,6 +132,44 @@
     <Compile Include="Views\BaseData\StoreHouse\StoreHouseView.xaml.cs">
       <DependentUpon>StoreHouseView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\BaseData\Product\ProductView.xaml.cs">
+      <DependentUpon>ProductView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BaseData\Product\BarCodeView.xaml.cs"><DependentUpon>BarCodeView.xaml</DependentUpon></Compile>
+    <Compile Include="Views\Stock\StockView.xaml.cs">
+      <DependentUpon>StockView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Stock\StockInView.xaml.cs">
+      <DependentUpon>StockInView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Stock\StockIssueView.xaml.cs">
+      <DependentUpon>StockIssueView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Stock\BusinessDocumentView.xaml.cs">
+      <DependentUpon>BusinessDocumentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Stock\SalesOrderReviewView.xaml.cs"><DependentUpon>SalesOrderReviewView.xaml</DependentUpon></Compile>
+    <Compile Include="Views\Stock\BarCodeBindingView.xaml.cs">
+      <DependentUpon>BarCodeBindingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Stock\InventoryCheckView.xaml.cs">
+      <DependentUpon>InventoryCheckView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Stock\BarcodeInventoryView.xaml.cs"><DependentUpon>BarcodeInventoryView.xaml</DependentUpon></Compile>
+    <Compile Include="Views\Stock\RedPacketView.xaml.cs"><DependentUpon>RedPacketView.xaml</DependentUpon></Compile>
+    <Compile Include="Views\Finance\FinanceView.xaml.cs">
+      <DependentUpon>FinanceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Finance\PersonPriceView.xaml.cs">
+      <DependentUpon>PersonPriceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Set\IniView.xaml.cs"><DependentUpon>IniView.xaml</DependentUpon></Compile>
+    <Compile Include="Views\Set\LogView.xaml.cs"><DependentUpon>LogView.xaml</DependentUpon></Compile>
+    <Compile Include="Views\Market\MarketProductView.xaml.cs"><DependentUpon>MarketProductView.xaml</DependentUpon></Compile>
+    <Compile Include="Views\Market\MarketUserView.xaml.cs"><DependentUpon>MarketUserView.xaml</DependentUpon></Compile>
+    <Compile Include="Views\Market\MarketIndentView.xaml.cs"><DependentUpon>MarketIndentView.xaml</DependentUpon></Compile>
+    <Compile Include="Views\Report\InventoryReportView.xaml.cs"><DependentUpon>InventoryReportView.xaml</DependentUpon></Compile>
+    <Compile Include="Views\Report\ReportStyleView.xaml.cs"><DependentUpon>ReportStyleView.xaml</DependentUpon></Compile>
       <Compile Include="Views\BaseData\Supply\SupplyView.xaml.cs">
         <DependentUpon>SupplyView.xaml</DependentUpon>
       </Compile>
@@ -136,6 +194,26 @@
     <Compile Include="ViewModels\Account\ConnectionSettingsWindowViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\BaseData\StoreHouse\StoreHouseViewModel.cs" />
+    <Compile Include="ViewModels\BaseData\Product\ProductViewModel.cs" />
+    <Compile Include="ViewModels\BaseData\Product\BarCodeViewModel.cs" />
+    <Compile Include="ViewModels\Stock\StockViewModel.cs" />
+    <Compile Include="ViewModels\Stock\StockInViewModel.cs" />
+    <Compile Include="ViewModels\Stock\StockIssueViewModel.cs" />
+    <Compile Include="ViewModels\Stock\BusinessDocumentViewModel.cs" />
+    <Compile Include="ViewModels\Stock\SalesOrderReviewViewModel.cs" />
+    <Compile Include="ViewModels\Stock\BarCodeBindingViewModel.cs" />
+    <Compile Include="ViewModels\Stock\InventoryCheckViewModel.cs" />
+    <Compile Include="ViewModels\Stock\BarcodeInventoryViewModel.cs" />
+    <Compile Include="ViewModels\Stock\RedPacketViewModel.cs" />
+    <Compile Include="ViewModels\Finance\FinanceViewModel.cs" />
+    <Compile Include="ViewModels\Finance\PersonPriceViewModel.cs" />
+    <Compile Include="ViewModels\Set\IniViewModel.cs" />
+    <Compile Include="ViewModels\Set\LogViewModel.cs" />
+    <Compile Include="ViewModels\Market\MarketProductViewModel.cs" />
+    <Compile Include="ViewModels\Market\MarketUserViewModel.cs" />
+    <Compile Include="ViewModels\Market\MarketIndentViewModel.cs" />
+    <Compile Include="ViewModels\Report\InventoryReportViewModel.cs" />
+    <Compile Include="ViewModels\Report\ReportStyleViewModel.cs" />
       <Compile Include="ViewModels\BaseData\Supply\SupplyViewModel.cs" />
     <Compile Include="ViewModels\BaseData\Shop\ShopViewModel.cs" />
     <Compile Include="ViewModels\BaseData\SalesMan\SalesManViewModel.cs" />
