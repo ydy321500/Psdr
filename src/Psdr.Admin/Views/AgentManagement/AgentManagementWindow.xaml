@@ -1,0 +1,210 @@
+<Window x:Class="Psdr.Admin.Views.AgentManagement.AgentManagementWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:shell="clr-namespace:System.Windows.Shell;assembly=PresentationFramework"
+        Title="PSDR 代理管理" Width="1160" Height="740" MinWidth="920" MinHeight="600"
+        WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="CanResize">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Psdr.UI;component/Themes/Theme.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <shell:WindowChrome.WindowChrome>
+        <shell:WindowChrome CaptionHeight="54" ResizeBorderThickness="6" GlassFrameThickness="0"
+                            CornerRadius="0" UseAeroCaptionButtons="False" />
+    </shell:WindowChrome.WindowChrome>
+    <Grid Background="{DynamicResource CanvasBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="54" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Border Background="{DynamicResource SurfaceBrush}" BorderBrush="{DynamicResource BorderBrush}"
+                BorderThickness="0,0,0,1">
+            <Grid>
+                <TextBlock Text="PSDR  ·  代理管理" FontSize="17" FontWeight="SemiBold"
+                           VerticalAlignment="Center" Margin="24,0,0,0" />
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button Style="{DynamicResource TitleBarButtonStyle}" Command="{Binding MinimizeCommand}"
+                            ToolTip="最小化" shell:WindowChrome.IsHitTestVisibleInChrome="True">
+                        <Path Data="{StaticResource MinimizeIconGeometry}" Stroke="{DynamicResource TextBrush}"
+                              StrokeThickness="1.8" Width="15" Height="15" Stretch="Uniform" />
+                    </Button>
+                    <Button Style="{DynamicResource TitleBarButtonStyle}" Command="{Binding ToggleMaximizeCommand}"
+                            ToolTip="最大化或还原" shell:WindowChrome.IsHitTestVisibleInChrome="True">
+                        <Path Data="{StaticResource MaximizeIconGeometry}" Stroke="{DynamicResource TextBrush}"
+                              StrokeThickness="1.7" Width="15" Height="15" Stretch="Uniform" />
+                    </Button>
+                    <Button Style="{DynamicResource CloseTitleBarButtonStyle}" Command="{Binding CloseCommand}"
+                            ToolTip="关闭" shell:WindowChrome.IsHitTestVisibleInChrome="True">
+                        <Path Data="{StaticResource CloseIconGeometry}" Stroke="{DynamicResource TextBrush}"
+                              StrokeThickness="1.7" Width="15" Height="15" Stretch="Uniform" />
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+        <Grid Grid.Row="1" Margin="22">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="370" />
+                <ColumnDefinition Width="18" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0" Background="{DynamicResource SurfaceBrush}" BorderBrush="{DynamicResource BorderBrush}"
+                    BorderThickness="1" CornerRadius="8">
+                <DockPanel>
+                    <Grid DockPanel.Dock="Top" Margin="18,16,18,12">
+                        <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+                        <StackPanel>
+                            <TextBlock Text="代理列表" FontSize="20" FontWeight="SemiBold" />
+                            <TextBlock Text="主库登记 · 分库状态" FontSize="13" Foreground="#72869A" Margin="0,4,0,0" />
+                        </StackPanel>
+                        <Button Grid.Column="1" Content="刷新" Command="{Binding RefreshCommand}"
+                                VerticalAlignment="Center" MinWidth="72" />
+                    </Grid>
+                    <ListBox ItemsSource="{Binding Agents}" SelectedItem="{Binding SelectedAgent}"
+                             BorderThickness="0" Margin="8,0,8,8" FontSize="15">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="10,7">
+                                    <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding AgentName}" FontWeight="SemiBold" FontSize="16" />
+                                        <TextBlock Text="{Binding AgentID}" FontSize="12" Foreground="#8295A8" Margin="0,3,0,0" />
+                                    </StackPanel>
+                                    <TextBlock Grid.Column="1" Text="{Binding ProvisioningStatus}" FontSize="13"
+                                               VerticalAlignment="Center" Margin="8,0,0,0" />
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </DockPanel>
+            </Border>
+            <Border Grid.Column="2" Background="{DynamicResource SurfaceBrush}" BorderBrush="{DynamicResource BorderBrush}"
+                    BorderThickness="1" CornerRadius="8">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel Margin="28,20,28,26">
+                        <Grid>
+                            <StackPanel>
+                                <TextBlock Text="代理资料" FontSize="23" FontWeight="SemiBold" />
+                                <TextBlock Text="创建时自动分配代理号、数据库及专用 SQL 账号" FontSize="14"
+                                           Foreground="#72869A" Margin="0,5,0,0" />
+                            </StackPanel>
+                            <Button Content="新增代理" Command="{Binding NewCommand}" HorizontalAlignment="Right"
+                                    VerticalAlignment="Top" MinWidth="102" />
+                        </Grid>
+                        <TextBlock Text="代理名称" Margin="0,23,0,6" />
+                        <TextBox Text="{Binding AgentName, UpdateSourceTrigger=PropertyChanged}" Height="38"
+                                 VerticalContentAlignment="Center" Padding="10,0" />
+                        <Grid Margin="0,16,0,0">
+                            <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="14" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions>
+                            <StackPanel><TextBlock Text="联系人" Margin="0,0,0,6" />
+                                <TextBox Text="{Binding Contact, UpdateSourceTrigger=PropertyChanged}" Height="38" VerticalContentAlignment="Center" Padding="10,0" /></StackPanel>
+                            <StackPanel Grid.Column="2"><TextBlock Text="联系电话" Margin="0,0,0,6" />
+                                <TextBox Text="{Binding Tel, UpdateSourceTrigger=PropertyChanged}" Height="38" VerticalContentAlignment="Center" Padding="10,0" /></StackPanel>
+                        </Grid>
+                        <Grid Margin="0,16,0,0">
+                            <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="14" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions>
+                            <StackPanel><TextBlock Text="省份" Margin="0,0,0,6" />
+                                <TextBox Text="{Binding Province, UpdateSourceTrigger=PropertyChanged}" Height="38" VerticalContentAlignment="Center" Padding="10,0" /></StackPanel>
+                            <StackPanel Grid.Column="2"><TextBlock Text="城市" Margin="0,0,0,6" />
+                                <TextBox Text="{Binding City, UpdateSourceTrigger=PropertyChanged}" Height="38" VerticalContentAlignment="Center" Padding="10,0" /></StackPanel>
+                        </Grid>
+                        <TextBlock Text="详细地址" Margin="0,16,0,6" />
+                        <TextBox Text="{Binding Address, UpdateSourceTrigger=PropertyChanged}" Height="38"
+                                 VerticalContentAlignment="Center" Padding="10,0" />
+                        <TextBlock Text="代理号 / 数据库名 / SQL 登录名" Margin="0,20,0,5" Foreground="#72869A" FontSize="13" />
+                        <TextBlock Text="{Binding SelectedId}" FontSize="14" TextWrapping="Wrap" />
+                        <TextBlock Text="开通状态" Margin="0,12,0,5" Foreground="#72869A" FontSize="13" />
+                        <TextBlock Text="{Binding SelectedStatus}" TextWrapping="Wrap" FontSize="14" />
+                        <WrapPanel Margin="0,20,0,0">
+                            <Button Content="创建代理及分库" Command="{Binding CreateCommand}" IsEnabled="{Binding CanCreate}"
+                                    Style="{DynamicResource PrimaryButtonStyle}" Margin="0,0,9,9" />
+                            <Button Content="保存资料" Command="{Binding SaveCommand}" IsEnabled="{Binding CanSave}" Margin="0,0,9,9" />
+                            <Button Content="重试开通" Command="{Binding RetryCommand}" IsEnabled="{Binding CanRetry}" Margin="0,0,9,9" />
+                            <Button Content="{Binding ToggleActiveLabel}" Command="{Binding ToggleActiveCommand}"
+                                    IsEnabled="{Binding CanToggleActive}" Margin="0,0,9,9" />
+                        </WrapPanel>
+                        <Border Background="#EEF5FD" CornerRadius="6" Padding="13" Margin="0,8,0,0">
+                            <TextBlock Text="{Binding Notice}" Foreground="#315B7C" TextWrapping="Wrap" FontSize="14" />
+                        </Border>
+                        <Border Background="#FFF6E8" CornerRadius="6" Padding="13" Margin="0,10,0,0">
+                            <TextBlock Text="{Binding InitialCredentials}" Foreground="#754B14" TextWrapping="Wrap" FontSize="14" />
+                        </Border>
+                        <Border BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0,1,0,0"
+                                Margin="0,24,0,0" Padding="0,20,0,0">
+                            <StackPanel>
+                                <Grid>
+                                    <StackPanel>
+                                        <TextBlock Text="代理功能" FontSize="21" FontWeight="SemiBold" />
+                                        <TextBlock Text="保存功能授权后写入代理库" FontSize="13"
+                                                   Foreground="#72869A" Margin="0,4,0,0" />
+                                    </StackPanel>
+                                </Grid>
+                                <DataGrid ItemsSource="{Binding Functions}" SelectedItem="{Binding SelectedFunction, Mode=TwoWay}"
+                                          IsReadOnly="True" SelectionMode="Single" Height="215" Margin="0,14,0,0">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="名称" Binding="{Binding FunctionName}" Width="2*" />
+                                        <DataGridTemplateColumn Header="类别" Width="65">
+                                            <DataGridTemplateColumn.CellTemplate><DataTemplate>
+                                                <TextBlock><TextBlock.Style><Style TargetType="TextBlock">
+                                                    <Setter Property="Text" Value="产品" />
+                                                    <Style.Triggers><DataTrigger Binding="{Binding FunctionType}" Value="1">
+                                                        <Setter Property="Text" Value="模块" />
+                                                    </DataTrigger></Style.Triggers>
+                                                </Style></TextBlock.Style></TextBlock>
+                                            </DataTemplate></DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTextColumn Header="到期时间" Binding="{Binding StopTime, StringFormat=yyyy-MM-dd}" Width="*" />
+                                        <DataGridTemplateColumn Header="状态" Width="65">
+                                            <DataGridTemplateColumn.CellTemplate><DataTemplate>
+                                                <TextBlock><TextBlock.Style><Style TargetType="TextBlock">
+                                                    <Setter Property="Text" Value="停用" />
+                                                    <Style.Triggers><DataTrigger Binding="{Binding State}" Value="1">
+                                                        <Setter Property="Text" Value="启用" />
+                                                    </DataTrigger></Style.Triggers>
+                                                </Style></TextBlock.Style></TextBlock>
+                                            </DataTemplate></DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                                <Grid Margin="0,15,0,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" /><ColumnDefinition Width="14" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel>
+                                        <TextBlock Text="功能名称" Margin="0,0,0,6" />
+                                        <TextBox Text="{Binding FunctionName, UpdateSourceTrigger=PropertyChanged}"
+                                                 Height="38" VerticalContentAlignment="Center" Padding="10,0" />
+                                    </StackPanel>
+                                    <StackPanel Grid.Column="2">
+                                        <TextBlock Text="类别" Margin="0,0,0,6" />
+                                        <ComboBox ItemsSource="{Binding FunctionTypes}" DisplayMemberPath="Label"
+                                                  SelectedValuePath="Value" SelectedValue="{Binding FunctionType, Mode=TwoWay}"
+                                                  IsEnabled="{Binding CanChangeFunctionType}" Height="38" />
+                                    </StackPanel>
+                                </Grid>
+                                <Grid Margin="0,14,0,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" /><ColumnDefinition Width="14" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel>
+                                        <TextBlock Text="到期日" Margin="0,0,0,6" />
+                                        <DatePicker SelectedDate="{Binding FunctionStopTime, Mode=TwoWay}" Height="38" />
+                                    </StackPanel>
+                                    <CheckBox Grid.Column="2" Content="启用" IsChecked="{Binding FunctionEnabled}"
+                                              VerticalAlignment="Bottom" Margin="0,0,0,9" />
+                                </Grid>
+                                <Button Content="保存代理功能" Command="{Binding SaveFunctionCommand}"
+                                        IsEnabled="{Binding CanEditFunctions}" Style="{DynamicResource PrimaryButtonStyle}"
+                                        HorizontalAlignment="Left" Margin="0,16,0,0" />
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </ScrollViewer>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>

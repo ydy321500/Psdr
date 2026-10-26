@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5FB48FE2-27CB-4549-9CC5-180350C4E833}</ProjectGuid>
+    <ProjectTypeGuids>{60DC8134-EBA5-43B8-BCC9-BB4BC16C2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Psdr.Admin</RootNamespace>
+    <AssemblyName>Psdr.Admin</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <Optimize>true</Optimize>
+    <DefineConstants>TRACE</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="DryIoc">
+      <HintPath>$(NuGetPackageRoot)dryioc.dll\4.7.7\lib\net45\DryIoc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xaml.Behaviors">
+      <HintPath>$(NuGetPackageRoot)microsoft.xaml.behaviors.wpf\1.1.31\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
+    </Reference>
+    <Reference Include="Prism">
+      <HintPath>$(NuGetPackageRoot)prism.core\8.1.97\lib\net47\Prism.dll</HintPath>
+    </Reference>
+    <Reference Include="Prism.DryIoc.Wpf">
+      <HintPath>$(NuGetPackageRoot)prism.dryioc\8.1.97\lib\net47\Prism.DryIoc.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Prism.Wpf">
+      <HintPath>$(NuGetPackageRoot)prism.wpf\8.1.97\lib\net47\Prism.Wpf.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Prism.DryIoc" Version="8.1.97" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Psdr.UI\Psdr.UI.csproj"><Project>{F3B53D9C-6409-442F-92DA-1F63BB9C9F38}</Project><Name>Psdr.UI</Name></ProjectReference>
+    <ProjectReference Include="..\Psdr.Dals\Psdr.Dals.csproj"><Project>{199254B1-467C-47DF-9472-810B64836C4C}</Project><Name>Psdr.Dals</Name></ProjectReference>
+    <ProjectReference Include="..\Psdr.Models\Psdr.Models.csproj"><Project>{D614EA1A-4CD5-48DB-B42E-4A1E20C1F129}</Project><Name>Psdr.Models</Name></ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Views\AgentManagement\AgentManagementWindow.xaml" />
+    <Compile Include="Views\AgentManagement\AgentManagementWindow.xaml.cs"><DependentUpon>AgentManagementWindow.xaml</DependentUpon></Compile>
+    <Compile Include="ViewModels\AgentManagement\AgentManagementWindowViewModel.cs" />
+    <Compile Include="Services\AdminSession.cs" />
+    <Compile Include="Services\AdminWindowNavigator.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

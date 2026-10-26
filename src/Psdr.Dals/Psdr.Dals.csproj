@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{199254B1-467C-47DF-9472-810B64836C4C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Psdr.Dals</RootNamespace>
+    <AssemblyName>Psdr.Dals</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <Optimize>true</Optimize>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Security" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>$(NuGetPackageRoot)newtonsoft.json\13.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="SqlSugar">
+      <HintPath>$(NuGetPackageRoot)sqlsugar\5.1.4.207\lib\SqlSugar.dll</HintPath>
+    </Reference>
+    <PackageReference Include="SqlSugar" Version="5.1.4.207" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    <ProjectReference Include="..\Psdr.Models\Psdr.Models.csproj">
+      <Project>{D614EA1A-4CD5-48DB-B42E-4A1E20C1F129}</Project>
+      <Name>Psdr.Models</Name>
+    </ProjectReference>
+    <Compile Include="Configuration\TenantDatabase.cs" />
+    <Compile Include="Configuration\ProvinceCityCatalog.cs" />
+    <Compile Include="Configuration\AgentSettingsStore.cs" />
+    <Compile Include="Admin\CentralDatabase.cs" />
+    <Compile Include="Admin\AdminAuthService.cs" />
+    <Compile Include="Admin\AgentDAL.cs" />
+    <Compile Include="Admin\TenantProvisioningService.cs" />
+    <Compile Include="Admin\AgentFunctionService.cs" />
+    <Compile Include="StoreHouse\StoreHouseDAL.cs" />
+    <Compile Include="ProductMap\ProductMapDAL.cs" />
+    <Compile Include="Dictionary\DictionaryDAL.cs" />
+    <Compile Include="Dashboard\DashboardDAL.cs" />
+    <Compile Include="Supply\SupplyDAL.cs" />
+    <Compile Include="Shop\ShopDAL.cs" />
+    <Compile Include="SalesMan\SalesManDAL.cs" />
+    <Compile Include="Security\PasswordHasher.cs" />
+    <Compile Include="Security\DefaultUserCredentials.cs" />
+    <Compile Include="User\UserDAL.cs" />
+    <EmbeddedResource Include="..\..\database\tenant\001_StoreHouse.sql">
+      <LogicalName>Psdr.Dals.Schema.Tenant.001_StoreHouse.sql</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\database\tenant\002_User.sql">
+      <LogicalName>Psdr.Dals.Schema.Tenant.002_User.sql</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\database\tenant\003_LegacyTables.sql">
+      <LogicalName>Psdr.Dals.Schema.Tenant.003_LegacyTables.sql</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\database\tenant\004_LegacyViews.sql">
+      <LogicalName>Psdr.Dals.Schema.Tenant.004_LegacyViews.sql</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data\pc.txt">
+      <LogicalName>Psdr.Dals.Data.pc.txt</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\database\tenant\005_TenantFunction.sql">
+      <LogicalName>Psdr.Dals.Schema.Tenant.005_TenantFunction.sql</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

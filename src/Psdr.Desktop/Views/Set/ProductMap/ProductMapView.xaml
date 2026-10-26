@@ -1,0 +1,122 @@
+<UserControl x:Class="Psdr.Desktop.Views.Set.ProductMap.ProductMapView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibility" />
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="14" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Border Style="{DynamicResource ContentCardStyle}" Padding="22,18">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <StackPanel>
+                    <TextBlock Text="产品属性" Style="{DynamicResource PageTitleTextStyle}" />
+                    <TextBlock Text="配置当前代理产品的属性名称、类型和启用状态"
+                               Margin="0,5,0,0" Style="{DynamicResource SecondaryTextStyle}" />
+                </StackPanel>
+                <Button Grid.Column="1" Content="刷新" Command="{Binding RefreshCommand}"
+                        VerticalAlignment="Center" />
+            </Grid>
+        </Border>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0" Style="{DynamicResource ContentCardStyle}" Padding="20"
+                    VerticalAlignment="Top">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="12" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="12" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="240" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="产品类型" VerticalAlignment="Center" Margin="0,0,12,0" />
+                        <ComboBox Grid.Column="1" ItemsSource="{Binding Products}"
+                                  DisplayMemberPath="FunctionName" SelectedItem="{Binding SelectedProduct, Mode=TwoWay}" />
+                    </Grid>
+                    <DataGrid Grid.Row="2" ItemsSource="{Binding Maps}" MaxHeight="520"
+                              CanUserAddRows="False" CanUserDeleteRows="False"
+                              SelectedItem="{Binding SelectedMap, Mode=TwoWay}"
+                              IsReadOnly="True" SelectionMode="Single">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="字段" Binding="{Binding KeyName}" Width="90" />
+                            <DataGridTextColumn Header="属性名称" Binding="{Binding ValueName}" Width="2*" />
+                            <DataGridTextColumn Header="类型" Binding="{Binding FieldType}" Width="100" />
+                            <DataGridTemplateColumn Header="状态" Width="90">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Border Style="{DynamicResource RecordStatusBadgeStyle}">
+                                            <TextBlock>
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock" BasedOn="{StaticResource RecordStatusTextStyle}">
+                                                    <Setter Property="Text" Value="未启用" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding State}" Value="1">
+                                                            <Setter Property="Text" Value="启用" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                            </TextBlock>
+                                        </Border>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="操作" Width="72"
+                                                    CellTemplate="{StaticResource RecordEditTemplate}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <TextBlock Grid.Row="4" Text="{Binding StatusMessage}" TextWrapping="Wrap"
+                               Foreground="{DynamicResource MutedTextBrush}" />
+                </Grid>
+            </Border>
+            <Border Grid.Column="2" Style="{DynamicResource ContentCardStyle}" Padding="22"
+                    Width="320" Margin="16,0,0,0"
+                    Visibility="{Binding IsEditing, Converter={StaticResource BooleanToVisibility}}">
+                <StackPanel>
+                    <TextBlock Text="属性设置" Style="{DynamicResource PageTitleTextStyle}" />
+                    <TextBlock Text="每种产品固定有 K1–K8 和 V1–V6 共 14 个位置。可在记录右侧编辑。"
+                               Margin="0,14,0,0" TextWrapping="Wrap"
+                               Style="{DynamicResource SecondaryTextStyle}" />
+                    <StackPanel Visibility="{Binding IsEditing, Converter={StaticResource BooleanToVisibility}}">
+                        <TextBlock Text="字段" Margin="0,20,0,7" />
+                        <TextBox Text="{Binding EditorKey, Mode=OneWay}" IsReadOnly="True" />
+                        <TextBlock Text="属性名称" Margin="0,16,0,7" />
+                        <TextBox Text="{Binding EditorName, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBlock Text="类型" Margin="0,16,0,7" />
+                        <ComboBox SelectedValue="{Binding EditorType, Mode=TwoWay}"
+                                  SelectedValuePath="Content">
+                            <ComboBoxItem Content="必填" />
+                            <ComboBoxItem Content="选填" />
+                        </ComboBox>
+                        <CheckBox Content="启用此属性" IsChecked="{Binding EditorEnabled, Mode=TwoWay}"
+                                  Margin="0,18,0,0" />
+                        <StackPanel Orientation="Horizontal" Margin="0,22,0,0">
+                            <Button Content="保存" Command="{Binding SaveCommand}"
+                                    Style="{DynamicResource PrimaryButtonStyle}" />
+                            <Button Content="取消" Command="{Binding CancelCommand}" Margin="8,0,0,0" />
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>

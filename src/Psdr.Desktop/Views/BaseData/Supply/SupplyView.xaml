@@ -1,0 +1,99 @@
+<UserControl x:Class="Psdr.Desktop.Views.BaseData.Supply.SupplyView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibility" />
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="14" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Border Style="{DynamicResource ContentCardStyle}" Padding="22,18">
+            <Grid>
+                <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+                <StackPanel>
+                    <TextBlock Text="供应商维护" Style="{DynamicResource PageTitleTextStyle}" />
+                    <TextBlock Text="管理当前代理的供应商资料" Margin="0,5,0,0"
+                               Style="{DynamicResource SecondaryTextStyle}" />
+                </StackPanel>
+                <Button Grid.Column="1" Content="＋ 新增供应商" Command="{Binding NewCommand}"
+                        Style="{DynamicResource PrimaryButtonStyle}" VerticalAlignment="Center" />
+            </Grid>
+        </Border>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /><ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Border Style="{DynamicResource ContentCardStyle}" Padding="20"
+                    VerticalAlignment="Top">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" /><RowDefinition Height="12" />
+                        <RowDefinition Height="Auto" /><RowDefinition Height="12" /><RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" /><ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <TextBlock Text="供应商" VerticalAlignment="Center" Margin="0,0,10,0"
+                                       Foreground="{DynamicResource MutedTextBrush}" FontSize="14" />
+                            <TextBox Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"
+                                     Width="220" ToolTip="按名称或联系人筛选" />
+                        </StackPanel>
+                        <Button Grid.Column="1" Content="刷新" Command="{Binding RefreshCommand}" Margin="8,0,0,0" />
+                    </Grid>
+                    <DataGrid Grid.Row="2" ItemsSource="{Binding Items}" MaxHeight="520"
+                              CanUserAddRows="False" CanUserDeleteRows="False"
+                              SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                              IsReadOnly="True" SelectionMode="Single">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="编号" Binding="{Binding SupplyID}" Width="70" />
+                            <DataGridTextColumn Header="供应商" Binding="{Binding SupplyName}" Width="2*" />
+                            <DataGridTextColumn Header="省份" Binding="{Binding Province}" Width="*" />
+                            <DataGridTextColumn Header="城市" Binding="{Binding City}" Width="*" />
+                            <DataGridTextColumn Header="联系人" Binding="{Binding Contacts}" Width="*" />
+                            <DataGridTextColumn Header="手机" Binding="{Binding Phone}" Width="*" />
+                            <DataGridTemplateColumn Header="操作" Width="126"
+                                                    CellTemplate="{StaticResource RecordEditDeleteTemplate}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <TextBlock Grid.Row="4" Text="{Binding StatusMessage}" TextWrapping="Wrap"
+                               Foreground="{DynamicResource MutedTextBrush}" />
+                </Grid>
+            </Border>
+            <Border Grid.Column="2" Style="{DynamicResource ContentCardStyle}" Padding="22"
+                    Width="360" Margin="16,0,0,0"
+                    Visibility="{Binding IsEditing, Converter={StaticResource BooleanToVisibility}}">
+                <DockPanel>
+                    <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" Margin="0,16,0,0">
+                        <Button Content="保存" Command="{Binding SaveCommand}" Style="{DynamicResource PrimaryButtonStyle}" />
+                        <Button Content="取消" Command="{Binding CancelCommand}" Margin="8,0,0,0" />
+                    </StackPanel>
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <StackPanel>
+                            <TextBlock Text="{Binding EditorTitle}" Style="{DynamicResource PageTitleTextStyle}" />
+                            <TextBlock Text="供应商名称 *" Margin="0,17,0,5" /><TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" />
+                            <TextBlock Text="省份 *" Margin="0,12,0,5" />
+                            <ComboBox ItemsSource="{Binding Location.Provinces}" IsEditable="True"
+                                      Text="{Binding Location.Province, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            <TextBlock Text="城市 *" Margin="0,12,0,5" />
+                            <ComboBox ItemsSource="{Binding Location.Cities}" IsEditable="True"
+                                      Text="{Binding Location.City, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            <TextBlock Text="联系人 *" Margin="0,12,0,5" /><TextBox Text="{Binding Contact, UpdateSourceTrigger=PropertyChanged}" />
+                            <TextBlock Text="地址" Margin="0,12,0,5" /><TextBox Text="{Binding Address, UpdateSourceTrigger=PropertyChanged}" />
+                            <TextBlock Text="电话" Margin="0,12,0,5" /><TextBox Text="{Binding Telephone, UpdateSourceTrigger=PropertyChanged}" />
+                            <TextBlock Text="手机" Margin="0,12,0,5" /><TextBox Text="{Binding Mobile, UpdateSourceTrigger=PropertyChanged}" />
+                            <TextBlock Text="传真" Margin="0,12,0,5" /><TextBox Text="{Binding Fax, UpdateSourceTrigger=PropertyChanged}" />
+                            <TextBlock Text="备注" Margin="0,12,0,5" /><TextBox Text="{Binding Remark, UpdateSourceTrigger=PropertyChanged}"
+                                AcceptsReturn="True" TextWrapping="Wrap" Height="70" />
+                        </StackPanel>
+                    </ScrollViewer>
+                </DockPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>

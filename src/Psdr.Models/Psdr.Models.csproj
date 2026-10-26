@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D614EA1A-4CD5-48DB-B42E-4A1E20C1F129}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Psdr.Models</RootNamespace>
+    <AssemblyName>Psdr.Models</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <Optimize>true</Optimize>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="SqlSugar">
+      <HintPath>$(NuGetPackageRoot)sqlsugar\5.1.4.207\lib\SqlSugar.dll</HintPath>
+    </Reference>
+    <PackageReference Include="SqlSugar" Version="5.1.4.207" />
+    <Compile Include="Entities\StoreHouse.cs" />
+    <Compile Include="Entities\User.cs" />
+    <Compile Include="Entities\Agent.cs" />
+    <Compile Include="Entities\Master\AdminUser.cs" />
+    <Compile Include="Entities\Master\AgentFunction.cs" />
+    <Compile Include="Entities\Master\NewMessage.cs" />
+    <Compile Include="Entities\Master\RedPacketRequestListServer.cs" />
+    <Compile Include="Entities\Master\RunLog.cs" />
+    <Compile Include="Entities\Master\ServerLog.cs" />
+    <Compile Include="Entities\Tenant\BarCode.cs" />
+    <Compile Include="Entities\Tenant\Dictionary.cs" />
+    <Compile Include="Entities\Tenant\FinanceShop.cs" />
+    <Compile Include="Entities\Tenant\FinanceSupply.cs" />
+    <Compile Include="Entities\Tenant\Indent.cs" />
+    <Compile Include="Entities\Tenant\IndentInfo.cs" />
+    <Compile Include="Entities\Tenant\Ini.cs" />
+    <Compile Include="Entities\Tenant\Log.cs" />
+    <Compile Include="Entities\Tenant\M_Cart.cs" />
+    <Compile Include="Entities\Tenant\M_Indent.cs" />
+    <Compile Include="Entities\Tenant\M_Product.cs" />
+    <Compile Include="Entities\Tenant\M_User.cs" />
+    <Compile Include="Entities\Tenant\PersonPriceShop.cs" />
+    <Compile Include="Entities\Tenant\PersonPriceSupply.cs" />
+    <Compile Include="Entities\Tenant\Product.cs" />
+    <Compile Include="Entities\Tenant\ProductMap.cs" />
+    <Compile Include="Entities\Tenant\TenantFunction.cs" />
+    <Compile Include="Entities\Tenant\ProductResponding.cs" />
+    <Compile Include="Entities\Tenant\RedPacketList.cs" />
+    <Compile Include="Entities\Tenant\RedPacketRequestList.cs" />
+    <Compile Include="Entities\Tenant\ReportStyle.cs" />
+    <Compile Include="Entities\Tenant\Return.cs" />
+    <Compile Include="Entities\Tenant\ReturnInfo.cs" />
+    <Compile Include="Entities\Tenant\SalesMan.cs" />
+    <Compile Include="Entities\Tenant\SalesPerson.cs" />
+    <Compile Include="Entities\Tenant\Shop.cs" />
+    <Compile Include="Entities\Tenant\Stock.cs" />
+    <Compile Include="Entities\Tenant\StorehouseRecord.cs" />
+    <Compile Include="Entities\Tenant\StorehouseRecordInfo.cs" />
+    <Compile Include="Entities\Tenant\Supply.cs" />
+    <Compile Include="Entities\Tenant\View_IndentInfo.cs" />
+    <Compile Include="Entities\Tenant\View_PersonPriceShopInfo.cs" />
+    <Compile Include="Entities\Tenant\View_PersonPriceSupplyInfo.cs" />
+    <Compile Include="Entities\Tenant\View_StockInfo.cs" />
+    <Compile Include="Entities\Tenant\View_StorehouseRecordInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

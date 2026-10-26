@@ -1,0 +1,223 @@
+<UserControl x:Class="Psdr.Desktop.Views.HomeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <StackPanel Margin="0,0,2,22">
+            <Grid Margin="0,4,0,24">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <StackPanel>
+                    <TextBlock Text="SYSTEM OVERVIEW" Foreground="{DynamicResource DashboardBlueBrush}"
+                               FontSize="13" FontWeight="Bold" />
+                    <TextBlock Text="系统概况" FontSize="28" FontWeight="SemiBold" Margin="0,8,0,0" />
+                    <TextBlock Text="当前代理的业务资料汇总" Foreground="{DynamicResource MutedTextBrush}"
+                               FontSize="15" Margin="0,5,0,0" />
+                </StackPanel>
+                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Bottom">
+                    <TextBlock Text="{Binding UpdatedAt}" Foreground="{DynamicResource MutedTextBrush}"
+                               FontSize="13" VerticalAlignment="Center" Margin="0,0,16,0" />
+                    <Button Content="刷新数据" Command="{Binding RefreshCommand}" Padding="16,8" />
+                </StackPanel>
+            </Grid>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" /><ColumnDefinition Width="16" />
+                    <ColumnDefinition Width="*" /><ColumnDefinition Width="16" />
+                    <ColumnDefinition Width="*" /><ColumnDefinition Width="16" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" Style="{DynamicResource DashboardCardStyle}" MinHeight="150">
+                    <Grid>
+                        <Grid Margin="20" VerticalAlignment="Center">
+                            <Grid.ColumnDefinitions><ColumnDefinition Width="44" /><ColumnDefinition Width="14" />
+                                <ColumnDefinition Width="*" /></Grid.ColumnDefinitions>
+                            <Border Width="44" Height="44" Background="{DynamicResource DashboardBlueTintBrush}"
+                                    CornerRadius="10" VerticalAlignment="Top">
+                                <Path Data="{StaticResource CustomerIconGeometry}" Stroke="{DynamicResource DashboardBlueBrush}"
+                                      StrokeThickness="1.7" Width="22" Height="22" Stretch="Uniform"
+                                      HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <StackPanel Grid.Column="2">
+                                <TextBlock Text="客户总数" Foreground="{DynamicResource MutedTextBrush}" FontSize="15" />
+                                <TextBlock Text="{Binding CustomerCount}" FontSize="31" FontWeight="Bold"
+                                           Margin="0,4,0,0" />
+                                <TextBlock Text="客户档案" Foreground="{DynamicResource MutedTextBrush}"
+                                           FontSize="13" TextWrapping="Wrap" />
+                            </StackPanel>
+                        </Grid>
+                        <Border Width="4" Background="{DynamicResource DashboardBlueBrush}"
+                                HorizontalAlignment="Right" CornerRadius="0,9,9,0" />
+                    </Grid>
+                </Border>
+                <Border Grid.Column="2" Style="{DynamicResource DashboardCardStyle}" MinHeight="150">
+                    <Grid>
+                        <Grid Margin="20" VerticalAlignment="Center">
+                            <Grid.ColumnDefinitions><ColumnDefinition Width="44" /><ColumnDefinition Width="14" />
+                                <ColumnDefinition Width="*" /></Grid.ColumnDefinitions>
+                            <Border Width="44" Height="44" Background="{DynamicResource DashboardCyanTintBrush}"
+                                    CornerRadius="10" VerticalAlignment="Top">
+                                <Path Data="{StaticResource DashboardIconGeometry}" Stroke="{DynamicResource DashboardCyanBrush}"
+                                      StrokeThickness="1.7" Width="22" Height="22" Stretch="Uniform"
+                                      HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <StackPanel Grid.Column="2">
+                                <TextBlock Text="产品种类" Foreground="{DynamicResource MutedTextBrush}" FontSize="15" />
+                                <TextBlock Text="{Binding ProductTypeCount}" FontSize="31" FontWeight="Bold"
+                                           Margin="0,4,0,0" />
+                                <TextBlock Text="可用类型" Foreground="{DynamicResource MutedTextBrush}"
+                                           FontSize="13" TextWrapping="Wrap" />
+                            </StackPanel>
+                        </Grid>
+                        <Border Width="4" Background="{DynamicResource DashboardCyanBrush}"
+                                HorizontalAlignment="Right" CornerRadius="0,9,9,0" />
+                    </Grid>
+                </Border>
+                <Border Grid.Column="4" Style="{DynamicResource DashboardCardStyle}" MinHeight="150">
+                    <Grid>
+                        <Grid Margin="20" VerticalAlignment="Center">
+                            <Grid.ColumnDefinitions><ColumnDefinition Width="44" /><ColumnDefinition Width="14" />
+                                <ColumnDefinition Width="*" /></Grid.ColumnDefinitions>
+                            <Border Width="44" Height="44" Background="{DynamicResource DashboardPurpleTintBrush}"
+                                    CornerRadius="10" VerticalAlignment="Top">
+                                <Path Data="{StaticResource DashboardProductIconGeometry}" Stroke="{DynamicResource DashboardPurpleBrush}"
+                                      StrokeThickness="1.7" Width="22" Height="22" Stretch="Uniform"
+                                      HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <StackPanel Grid.Column="2">
+                                <TextBlock Text="产品档案" Foreground="{DynamicResource MutedTextBrush}" FontSize="15" />
+                                <TextBlock Text="{Binding ProductCount}" FontSize="31" FontWeight="Bold"
+                                           Margin="0,4,0,0" />
+                                <TextBlock Text="产品记录" Foreground="{DynamicResource MutedTextBrush}"
+                                           FontSize="13" TextWrapping="Wrap" />
+                            </StackPanel>
+                        </Grid>
+                        <Border Width="4" Background="{DynamicResource DashboardPurpleBrush}"
+                                HorizontalAlignment="Right" CornerRadius="0,9,9,0" />
+                    </Grid>
+                </Border>
+                <Border Grid.Column="6" Style="{DynamicResource DashboardCardStyle}" MinHeight="150">
+                    <Grid>
+                        <Grid Margin="20" VerticalAlignment="Center">
+                            <Grid.ColumnDefinitions><ColumnDefinition Width="44" /><ColumnDefinition Width="14" />
+                                <ColumnDefinition Width="*" /></Grid.ColumnDefinitions>
+                            <Border Width="44" Height="44" Background="{DynamicResource DashboardCoralTintBrush}"
+                                    CornerRadius="10" VerticalAlignment="Top">
+                                <Path Data="{StaticResource WarehouseIconGeometry}" Stroke="{DynamicResource DashboardCoralBrush}"
+                                      StrokeThickness="1.7" Width="22" Height="22" Stretch="Uniform"
+                                      HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <StackPanel Grid.Column="2">
+                                <TextBlock Text="仓库数量" Foreground="{DynamicResource MutedTextBrush}" FontSize="15" />
+                                <TextBlock Text="{Binding WarehouseCount}" FontSize="31" FontWeight="Bold"
+                                           Margin="0,4,0,0" />
+                                <TextBlock Text="仓库档案" Foreground="{DynamicResource MutedTextBrush}"
+                                           FontSize="13" TextWrapping="Wrap" />
+                            </StackPanel>
+                        </Grid>
+                        <Border Width="4" Background="{DynamicResource DashboardCoralBrush}"
+                                HorizontalAlignment="Right" CornerRadius="0,9,9,0" />
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <Grid Margin="0,22,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*" /><ColumnDefinition Width="18" />
+                    <ColumnDefinition Width="2*" />
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" Style="{DynamicResource DashboardPanelStyle}" MinHeight="330">
+                    <StackPanel>
+                        <TextBlock Text="基础资料分布" FontSize="19" FontWeight="SemiBold" />
+                        <TextBlock Text="当前代理库中的基础资料数量" Margin="0,5,0,26"
+                                   Foreground="{DynamicResource MutedTextBrush}" FontSize="14" />
+                        <Grid Margin="0,0,0,20">
+                            <Grid.ColumnDefinitions><ColumnDefinition Width="105" /><ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="58" /></Grid.ColumnDefinitions>
+                            <TextBlock Text="客户" FontSize="15" VerticalAlignment="Center" />
+                            <ProgressBar Grid.Column="1" Value="{Binding CustomerCount, Mode=OneWay}"
+                                         Maximum="{Binding MaxBarValue, Mode=OneWay}" Foreground="{DynamicResource DashboardBlueBrush}"
+                                         Style="{DynamicResource DashboardProgressStyle}" VerticalAlignment="Center" />
+                            <TextBlock Grid.Column="2" Text="{Binding CustomerCount}" FontSize="15"
+                                       FontWeight="SemiBold" TextAlignment="Right" />
+                        </Grid>
+                        <Grid Margin="0,0,0,20">
+                            <Grid.ColumnDefinitions><ColumnDefinition Width="105" /><ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="58" /></Grid.ColumnDefinitions>
+                            <TextBlock Text="供应商" FontSize="15" VerticalAlignment="Center" />
+                            <ProgressBar Grid.Column="1" Value="{Binding SupplierCount, Mode=OneWay}"
+                                         Maximum="{Binding MaxBarValue, Mode=OneWay}" Foreground="{DynamicResource DashboardCyanBrush}"
+                                         Style="{DynamicResource DashboardProgressStyle}" VerticalAlignment="Center" />
+                            <TextBlock Grid.Column="2" Text="{Binding SupplierCount}" FontSize="15"
+                                       FontWeight="SemiBold" TextAlignment="Right" />
+                        </Grid>
+                        <Grid Margin="0,0,0,20">
+                            <Grid.ColumnDefinitions><ColumnDefinition Width="105" /><ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="58" /></Grid.ColumnDefinitions>
+                            <TextBlock Text="产品档案" FontSize="15" VerticalAlignment="Center" />
+                            <ProgressBar Grid.Column="1" Value="{Binding ProductCount, Mode=OneWay}"
+                                         Maximum="{Binding MaxBarValue, Mode=OneWay}" Foreground="{DynamicResource DashboardPurpleBrush}"
+                                         Style="{DynamicResource DashboardProgressStyle}" VerticalAlignment="Center" />
+                            <TextBlock Grid.Column="2" Text="{Binding ProductCount}" FontSize="15"
+                                       FontWeight="SemiBold" TextAlignment="Right" />
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions><ColumnDefinition Width="105" /><ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="58" /></Grid.ColumnDefinitions>
+                            <TextBlock Text="仓库" FontSize="15" VerticalAlignment="Center" />
+                            <ProgressBar Grid.Column="1" Value="{Binding WarehouseCount, Mode=OneWay}"
+                                         Maximum="{Binding MaxBarValue, Mode=OneWay}" Foreground="{DynamicResource DashboardCoralBrush}"
+                                         Style="{DynamicResource DashboardProgressStyle}" VerticalAlignment="Center" />
+                            <TextBlock Grid.Column="2" Text="{Binding WarehouseCount}" FontSize="15"
+                                       FontWeight="SemiBold" TextAlignment="Right" />
+                        </Grid>
+                    </StackPanel>
+                </Border>
+                <Border Grid.Column="2" Style="{DynamicResource DashboardPanelStyle}" MinHeight="330">
+                    <StackPanel>
+                        <TextBlock Text="可用产品类型" FontSize="19" FontWeight="SemiBold" />
+                        <TextBlock Text="当前代理已启用且未过期的产品类型" Margin="0,5,0,20"
+                                   Foreground="{DynamicResource MutedTextBrush}" FontSize="14" TextWrapping="Wrap" />
+                        <Grid HorizontalAlignment="Center" Width="138" Height="138" Margin="0,0,0,16">
+                            <Ellipse Stroke="{DynamicResource DashboardCyanTintBrush}" StrokeThickness="14" />
+                            <Ellipse Stroke="{DynamicResource DashboardCyanBrush}" StrokeThickness="4" Margin="10" />
+                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <TextBlock Text="{Binding ProductTypeCount}" FontSize="34" FontWeight="Bold"
+                                           Foreground="{DynamicResource TextBrush}" HorizontalAlignment="Center" />
+                                <TextBlock Text="种产品" FontSize="13" Foreground="{DynamicResource MutedTextBrush}"
+                                           HorizontalAlignment="Center" />
+                            </StackPanel>
+                        </Grid>
+                        <ItemsControl ItemsSource="{Binding ProductTypes}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Background="{DynamicResource CanvasBrush}" CornerRadius="5"
+                                            Padding="10,6" Margin="0,0,0,6">
+                                        <TextBlock Text="{Binding}" FontSize="14" />
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                        <TextBlock Text="{Binding EmptyProductTypeMessage}" TextAlignment="Center" FontSize="14"
+                                   Foreground="{DynamicResource MutedTextBrush}" Margin="0,4,0,0">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding HasProductTypes}" Value="False">
+                                            <Setter Property="Visibility" Value="Visible" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </StackPanel>
+                </Border>
+            </Grid>
+            <TextBlock Text="{Binding StatusMessage}" Foreground="{DynamicResource MutedTextBrush}"
+                       FontSize="13" Margin="2,18,0,0" TextWrapping="Wrap" />
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

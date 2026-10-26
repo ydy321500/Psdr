@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C275870A-314E-42A5-9081-204018483733}</ProjectGuid>
+    <ProjectTypeGuids>{60DC8134-EBA5-43B8-BCC9-BB4BC16C2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Psdr.Desktop</RootNamespace>
+    <AssemblyName>Psdr.Desktop</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <Optimize>true</Optimize>
+    <DefineConstants>TRACE</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="DryIoc">
+      <HintPath>$(NuGetPackageRoot)dryioc.dll\4.7.7\lib\net45\DryIoc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xaml.Behaviors">
+      <HintPath>$(NuGetPackageRoot)microsoft.xaml.behaviors.wpf\1.1.31\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>$(NuGetPackageRoot)newtonsoft.json\13.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Prism">
+      <HintPath>$(NuGetPackageRoot)prism.core\8.1.97\lib\net47\Prism.dll</HintPath>
+    </Reference>
+    <Reference Include="Prism.DryIoc.Wpf">
+      <HintPath>$(NuGetPackageRoot)prism.dryioc\8.1.97\lib\net47\Prism.DryIoc.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Prism.Wpf">
+      <HintPath>$(NuGetPackageRoot)prism.wpf\8.1.97\lib\net47\Prism.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="SqlSugar">
+      <HintPath>$(NuGetPackageRoot)sqlsugar\5.1.4.207\lib\SqlSugar.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Prism.DryIoc" Version="8.1.97" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Psdr.UI\Psdr.UI.csproj">
+      <Project>{F3B53D9C-6409-442F-92DA-1F63BB9C9F38}</Project>
+      <Name>Psdr.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Psdr.Dals\Psdr.Dals.csproj">
+      <Project>{199254B1-467C-47DF-9472-810B64836C4C}</Project>
+      <Name>Psdr.Dals</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Psdr.Models\Psdr.Models.csproj">
+      <Project>{D614EA1A-4CD5-48DB-B42E-4A1E20C1F129}</Project>
+      <Name>Psdr.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Psdr.Admin\Psdr.Admin.csproj">
+      <Project>{5FB48FE2-27CB-4549-9CC5-180350C4E833}</Project>
+      <Name>Psdr.Admin</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml" />
+    <Resource Include="Assets\login-warehouse.png" />
+    <Page Include="Views\Shell.xaml" />
+    <Page Include="Views\Account\LoginWindow.xaml" />
+    <Page Include="Views\Account\ConnectionSettingsWindow.xaml" />
+    <Page Include="Views\Common\ConfirmationWindow.xaml" />
+    <Page Include="Views\HomeView.xaml" />
+    <Page Include="Views\BaseData\StoreHouse\StoreHouseView.xaml" />
+      <Page Include="Views\BaseData\Supply\SupplyView.xaml" />
+    <Page Include="Views\BaseData\Shop\ShopView.xaml" />
+    <Page Include="Views\BaseData\SalesMan\SalesManView.xaml" />
+    <Page Include="Views\BaseData\User\UserView.xaml" />
+    <Page Include="Views\Set\ProductMap\ProductMapView.xaml" />
+    <Page Include="Views\BaseData\Dictionary\DictionaryView.xaml" />
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shell.xaml.cs">
+      <DependentUpon>Shell.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\ConnectionSettingsWindow.xaml.cs">
+      <DependentUpon>ConnectionSettingsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Common\ConfirmationWindow.xaml.cs">
+      <DependentUpon>ConfirmationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HomeView.xaml.cs">
+      <DependentUpon>HomeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BaseData\StoreHouse\StoreHouseView.xaml.cs">
+      <DependentUpon>StoreHouseView.xaml</DependentUpon>
+    </Compile>
+      <Compile Include="Views\BaseData\Supply\SupplyView.xaml.cs">
+        <DependentUpon>SupplyView.xaml</DependentUpon>
+      </Compile>
+    <Compile Include="Views\BaseData\Shop\ShopView.xaml.cs">
+      <DependentUpon>ShopView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BaseData\SalesMan\SalesManView.xaml.cs">
+      <DependentUpon>SalesManView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BaseData\User\UserView.xaml.cs">
+      <DependentUpon>UserView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Set\ProductMap\ProductMapView.xaml.cs">
+      <DependentUpon>ProductMapView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BaseData\Dictionary\DictionaryView.xaml.cs">
+      <DependentUpon>DictionaryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\ShellViewModel.cs" />
+    <Compile Include="ViewModels\Common\ProvinceCitySelection.cs" />
+    <Compile Include="ViewModels\Account\LoginWindowViewModel.cs" />
+    <Compile Include="ViewModels\Account\ConnectionSettingsWindowViewModel.cs" />
+    <Compile Include="ViewModels\HomeViewModel.cs" />
+    <Compile Include="ViewModels\BaseData\StoreHouse\StoreHouseViewModel.cs" />
+      <Compile Include="ViewModels\BaseData\Supply\SupplyViewModel.cs" />
+    <Compile Include="ViewModels\BaseData\Shop\ShopViewModel.cs" />
+    <Compile Include="ViewModels\BaseData\SalesMan\SalesManViewModel.cs" />
+    <Compile Include="ViewModels\BaseData\User\UserViewModel.cs" />
+    <Compile Include="ViewModels\Set\ProductMap\ProductMapViewModel.cs" />
+    <Compile Include="ViewModels\BaseData\Dictionary\DictionaryViewModel.cs" />
+    <Compile Include="Services\IConfirmationService.cs" />
+    <Compile Include="Services\ConfirmationService.cs" />
+    <Compile Include="Services\IWindowCommandService.cs" />
+    <Compile Include="Services\WindowCommandService.cs" />
+    <Compile Include="Services\CurrentSession.cs" />
+    <Compile Include="Services\BusinessPermissions.cs" />
+    <Compile Include="Services\IApplicationSessionService.cs" />
+    <Compile Include="Services\ApplicationSessionService.cs" />
+    <Compile Include="Services\LoginPreferenceStore.cs" />
+    <Compile Include="Services\IConnectionSettingsDialogService.cs" />
+    <Compile Include="Services\ConnectionSettingsDialogService.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
