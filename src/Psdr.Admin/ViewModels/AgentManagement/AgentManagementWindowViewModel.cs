@@ -73,6 +73,9 @@ namespace Psdr.Admin.ViewModels.AgentManagement
             };
             RefreshCommand = new DelegateCommand(async () => await RunAsync(RefreshAsync));
             NewCommand = new DelegateCommand(ClearEditor);
+            CancelEditCommand = new DelegateCommand(CancelAgentEditor);
+            ConfigureFunctionCommand = new DelegateCommand(ClearFunctionEditor);
+            CancelFunctionCommand = new DelegateCommand(ClearFunctionEditor);
             CreateCommand = new DelegateCommand(async () => await RunAsync(CreateAsync));
             SaveCommand = new DelegateCommand(async () => await RunAsync(SaveAsync));
             RetryCommand = new DelegateCommand(async () => await RunAsync(RetryAsync));
@@ -93,6 +96,9 @@ namespace Psdr.Admin.ViewModels.AgentManagement
         public FunctionTypeChoice[] FunctionTypes { get; }
         public DelegateCommand RefreshCommand { get; }
         public DelegateCommand NewCommand { get; }
+        public DelegateCommand CancelEditCommand { get; }
+        public DelegateCommand ConfigureFunctionCommand { get; }
+        public DelegateCommand CancelFunctionCommand { get; }
         public DelegateCommand CreateCommand { get; }
         public DelegateCommand SaveCommand { get; }
         public DelegateCommand RetryCommand { get; }
@@ -339,6 +345,22 @@ namespace Psdr.Admin.ViewModels.AgentManagement
             AgentName = Contact = Tel = Address = Province = City = null;
             InitialCredentials = null;
             Notice = "填写代理资料后点击“创建代理及分库”。";
+        }
+
+        /// <summary>取消代理资料编辑，并从已选代理恢复尚未保存的字段。</summary>
+        private void CancelAgentEditor()
+        {
+            if (SelectedAgent == null)
+            {
+                ClearEditor();
+                return;
+            }
+            AgentName = SelectedAgent.AgentName;
+            Contact = SelectedAgent.Contact;
+            Tel = SelectedAgent.Tel;
+            Address = SelectedAgent.AgentAddress;
+            Province = SelectedAgent.AgentProvince;
+            City = SelectedAgent.AgentCity;
         }
 
         /// <summary>

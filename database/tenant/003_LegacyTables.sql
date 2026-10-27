@@ -305,6 +305,7 @@ BEGIN
     (
         [ReportID] int IDENTITY(1,1) NOT NULL,
         [ReportName] nvarchar(max) NULL,
+        [ReportContent] varbinary(max) NULL,
         CONSTRAINT [PK_ReportStyle] PRIMARY KEY ([ReportID])
     );
 END;

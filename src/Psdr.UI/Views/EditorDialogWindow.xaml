@@ -1,0 +1,33 @@
+<Window x:Class="Psdr.UI.Views.EditorDialogWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:shell="clr-namespace:System.Windows.Shell;assembly=PresentationFramework"
+        Width="500" MinWidth="420" MaxHeight="760" SizeToContent="Height"
+        ResizeMode="CanResize" WindowStartupLocation="CenterOwner"
+        WindowStyle="None" Background="White" ShowInTaskbar="False">
+    <shell:WindowChrome.WindowChrome>
+        <shell:WindowChrome CaptionHeight="42" ResizeBorderThickness="6" GlassFrameThickness="0"
+                            CornerRadius="0" UseAeroCaptionButtons="False" />
+    </shell:WindowChrome.WindowChrome>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="42" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Border Grid.RowSpan="2" Panel.ZIndex="10" Style="{DynamicResource DialogOutlineStyle}" />
+        <Border Grid.Row="0" Style="{DynamicResource DialogHeaderStyle}">
+            <Grid>
+                <TextBlock Text="{Binding Title, RelativeSource={RelativeSource AncestorType=Window}}"
+                           Foreground="White" FontSize="14" FontWeight="SemiBold"
+                           VerticalAlignment="Center" Margin="20,0,0,0" />
+                <Button Style="{DynamicResource LoginWindowButtonStyle}" Content="×" FontSize="21"
+                        HorizontalAlignment="Right" Margin="0,4,8,4" Click="CloseClick"
+                        ToolTip="关闭" AutomationProperties.AutomationId="EditorDialogClose"
+                        shell:WindowChrome.IsHitTestVisibleInChrome="True" />
+            </Grid>
+        </Border>
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+            <ContentControl x:Name="EditorHost" Margin="20" />
+        </ScrollViewer>
+    </Grid>
+</Window>

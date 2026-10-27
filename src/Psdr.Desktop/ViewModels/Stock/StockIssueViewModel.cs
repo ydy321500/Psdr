@@ -86,6 +86,8 @@ namespace Psdr.Desktop.ViewModels.Stock
         public virtual string LineSectionTitle => "添加出库明细";
         public virtual string LinePriceToolTip => "销售单价";
         public virtual string SaveButtonText => "保存出库";
+        /// <summary>提供当前出库或退货模式对应的新增按钮文案。</summary>
+        public virtual string NewButtonText => "新增出库单";
         protected virtual bool IsReturnMode => false;
         /// <summary>指示当前页面是否允许将销售明细保存为待审核订单。</summary>
         public virtual bool CanSaveDraft => !IsReturnMode;
@@ -208,6 +210,8 @@ namespace Psdr.Desktop.ViewModels.Stock
         public override string LineSectionTitle => "添加退货明细";
         public override string LinePriceToolTip => "退货单价";
         public override string SaveButtonText => "保存退货";
+        /// <summary>为客户退货页面显示新增退货单入口。</summary>
+        public override string NewButtonText => "新增退货单";
         protected override bool IsReturnMode => true;
         public override bool CanSaveDraft => false;
     }

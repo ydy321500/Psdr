@@ -35,6 +35,11 @@
   <ItemGroup>
     <Compile Include="Behaviors\SecurePasswordBinding.cs" />
     <Compile Include="Behaviors\RowCommandRefresh.cs" />
+    <Compile Include="Behaviors\EditorDialog.cs" />
+    <Compile Include="Views\EditorDialogWindow.xaml.cs">
+      <DependentUpon>EditorDialogWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Views\EditorDialogWindow.xaml" />
     <Page Include="Themes\Colors.xaml" />
     <Page Include="Themes\Icons.xaml" />
     <Page Include="Themes\Controls.xaml" />

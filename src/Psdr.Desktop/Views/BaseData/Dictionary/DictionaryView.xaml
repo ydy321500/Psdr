@@ -1,4 +1,4 @@
-<UserControl x:Class="Psdr.Desktop.Views.BaseData.Dictionary.DictionaryView"
+<UserControl xmlns:dialog="clr-namespace:Psdr.UI.Behaviors;assembly=Psdr.UI" x:Class="Psdr.Desktop.Views.BaseData.Dictionary.DictionaryView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <UserControl.Resources>
@@ -62,7 +62,7 @@
             </Border>
             <Border Grid.Column="2" Style="{DynamicResource ContentCardStyle}" Padding="22"
                     Width="320" Margin="16,0,0,0"
-                    Visibility="{Binding IsEditing, Converter={StaticResource BooleanToVisibility}}">
+                    Visibility="{Binding IsEditing, Converter={StaticResource BooleanToVisibility}}" dialog:EditorDialog.IsOpen="{Binding IsEditing}" dialog:EditorDialog.Title="字典资料" dialog:EditorDialog.CancelCommand="{Binding CancelCommand}">
                 <StackPanel>
                     <TextBlock Text="字典设置" Style="{DynamicResource PageTitleTextStyle}" />
                     <TextBlock Text="产品字典关联已启用的产品属性；业务字典可输入自定义名称。"

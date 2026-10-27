@@ -1,4 +1,4 @@
-<UserControl x:Class="Psdr.Desktop.Views.Set.ProductMap.ProductMapView"
+<UserControl xmlns:dialog="clr-namespace:Psdr.UI.Behaviors;assembly=Psdr.UI" x:Class="Psdr.Desktop.Views.Set.ProductMap.ProductMapView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <UserControl.Resources>
@@ -90,10 +90,10 @@
             </Border>
             <Border Grid.Column="2" Style="{DynamicResource ContentCardStyle}" Padding="22"
                     Width="320" Margin="16,0,0,0"
-                    Visibility="{Binding IsEditing, Converter={StaticResource BooleanToVisibility}}">
+                    Visibility="{Binding IsEditing, Converter={StaticResource BooleanToVisibility}}" dialog:EditorDialog.IsOpen="{Binding IsEditing}" dialog:EditorDialog.Title="产品属性" dialog:EditorDialog.CancelCommand="{Binding CancelCommand}">
                 <StackPanel>
                     <TextBlock Text="属性设置" Style="{DynamicResource PageTitleTextStyle}" />
-                    <TextBlock Text="每种产品固定有 K1–K8 和 V1–V6 共 14 个位置。可在记录右侧编辑。"
+                    <TextBlock Text="每种产品固定有 K1–K8 和 V1–V6 共 14 个位置。选择记录后在弹窗中编辑。"
                                Margin="0,14,0,0" TextWrapping="Wrap"
                                Style="{DynamicResource SecondaryTextStyle}" />
                     <StackPanel Visibility="{Binding IsEditing, Converter={StaticResource BooleanToVisibility}}">
